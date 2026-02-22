@@ -1,0 +1,155 @@
+# Getting Started
+
+Learn how to integrate and use AppEntitlements in your iOS and macOS applications.
+
+## Installation
+
+Add AppEntitlements to your project using Swift Package Manager.
+
+### Swift Package Manager
+
+Add the package dependency to your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/wiedem/app-entitlements.git", from: "1.0.0")
+]
+```
+
+Or in Xcode:
+1. File → Add Package Dependencies...
+2. Enter: [https://github.com/wiedem/app-entitlements.git](https://github.com/wiedem/app-entitlements.git)
+
+### Requirements
+
+- iOS 15.0+
+- macOS 12.0+
+- tvOS 15.0+
+- watchOS 8.0+
+- Swift 6.0+
+
+## Basic Usage
+
+Import the package and access entitlements through static properties.
+
+```swift
+import AppEntitlements
+
+do {
+    // Access entitlements
+    if let appID = try AppEntitlements.applicationIdentifier {
+        print("App ID: \(appID)")
+    }
+    
+    if let keychainGroups = try AppEntitlements.keychainAccessGroups {
+        print("Keychain Groups: \(keychainGroups.joined(separator: ", "))")
+    }
+    
+    if let isDebug = try AppEntitlements.getTaskAllow {
+        print("Debug mode: \(isDebug)")
+    }
+} catch {
+    print("Error reading entitlements: \(error)")
+}
+```
+
+### Return Values
+
+- Properties return `nil` when an entitlement is not present
+- Throws errors when entitlements cannot be accessed or parsed
+- All properties are optional (`String?`, `Bool?`, `[String]?`, etc.)
+
+## Accessing Custom Entitlements
+
+For entitlements without built-in properties, use ``AppEntitlements/AppEntitlements/getValue(for:as:transform:)-5s4fs``:
+
+```swift
+// Access a new Apple entitlement
+let newFeature: Bool? = try AppEntitlements.getValue(
+    for: "com.apple.developer.new-feature"
+)
+```
+
+### Creating Convenience Extensions
+
+For frequently accessed entitlements, create an extension property:
+
+```swift
+extension AppEntitlements {
+    /// Access to the new iOS 18 feature.
+    static var newFeatureEnabled: Bool? {
+        get throws {
+            try getValue(for: "com.apple.developer.new-feature")
+        }
+    }
+}
+
+// Use like built-in properties
+if try AppEntitlements.newFeatureEnabled == true {
+    enableNewFeature()
+}
+```
+
+## Supported Types
+
+### Basic Types
+The ``AppEntitlements/AppEntitlements/getValue(for:as:transform:)-5s4fs`` method supports common Swift types:
+```swift
+let stringValue: String? = try AppEntitlements.getValue(for: "key")
+let boolValue: Bool? = try AppEntitlements.getValue(for: "key")
+let intValue: Int32? = try AppEntitlements.getValue(for: "key")
+```
+
+Supported: `String`, `Bool`, `Int32`, `Int64`, `Float`, `Double`, `Data`, `Date`
+
+### Arrays
+Use ``AppEntitlements/AppEntitlements/getArray(for:elementType:transform:)-(String,_,_)`` for typed arrays:
+```swift
+let groups: [String]? = try AppEntitlements.getArray(
+    for: "keychain-access-groups",
+    elementType: String.self
+)
+```
+
+### RawRepresentable Types
+Any `RawRepresentable` type with `String` as `RawValue` is supported.
+
+Built-in types: ``ApsEnvironment``, ``ClassKitEnvironment``, ``ICloudContainerEnvironment``
+
+```swift
+// Examples with built-in types
+let apsEnv = try AppEntitlements.apsEnvironment
+let protection = try AppEntitlements.defaultDataProtection
+let attestEnv = try AppEntitlements.appAttestEnvironment
+
+// Custom RawRepresentable types
+enum MyEnvironment: String {
+    case dev, prod
+}
+
+let env: MyEnvironment? = try AppEntitlements.getValue(
+    for: "com.example.environment",
+    as: MyEnvironment.self
+)
+```
+
+### Complex Structures
+Use ``PropertyListValue`` for nested data structures:
+```swift
+let array: [PropertyListValue]? = try AppEntitlements.getValue(for: "key")
+let dict: [String: PropertyListValue]? = try AppEntitlements.getValue(for: "key")
+```
+
+## Troubleshooting
+
+If you encounter issues with entitlements:
+
+- Verify your app's provisioning profile includes the required entitlements
+- Check that your entitlements file (`.entitlements`) is properly configured
+- Review Apple's [Diagnosing Issues with Entitlements](https://developer.apple.com/documentation/bundleresources/diagnosing-issues-with-entitlements) guide
+
+## Next Steps
+
+- Explore <doc:CommonEntitlements>
+- Handle <doc:CustomEntitlements>
+- Learn about <doc:ReadingExecutableEntitlements>

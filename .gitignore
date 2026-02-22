@@ -1,0 +1,28 @@
+.DS_Store
+/.build
+/Packages
+DerivedData/
+.netrc
+
+# Xcode
+xcuserdata/
+*.xcodeproj/
+*.xcworkspace/xcshareddata/
+
+# Swift Package Manager
+Package.resolved
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.swiftpm/xcode/xcshareddata/
+
+# IDEs
+.vscode/
+.idea/
+
+# Documentation
+.build-documentation/
+docs/
+
+# Project notes
+Claude.md
+CLAUDE.md
