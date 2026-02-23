@@ -1,6 +1,6 @@
 # Getting Started
 
-Learn how to integrate and use AppEntitlements in your iOS and macOS applications.
+Learn how to integrate and use AppEntitlements in your Apple platform applications.
 
 ## Installation
 
@@ -25,6 +25,7 @@ Or in Xcode:
 - iOS 15.0+
 - macOS 12.0+
 - tvOS 15.0+
+- visionOS 1.0+
 - watchOS 8.0+
 - Swift 6.0+
 

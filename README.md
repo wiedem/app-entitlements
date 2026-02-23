@@ -1,9 +1,9 @@
 # AppEntitlements
 
-A Swift package that provides type-safe runtime access to app entitlements for iOS, macOS, tvOS, and watchOS applications.
+A Swift package that provides type-safe runtime access to app entitlements for iOS, macOS, tvOS, visionOS, and watchOS applications.
 
 [![Swift 6](https://img.shields.io/badge/Swift-6.0-orange.svg)](https://swift.org)
-[![Platforms](https://img.shields.io/badge/Platforms-iOS%2015+%20|%20macOS%2012+%20|%20tvOS%2015+%20|%20watchOS%208+-blue.svg)](https://swift.org)
+[![Platforms](https://img.shields.io/badge/Platforms-iOS%2015+%20|%20macOS%2012+%20|%20tvOS%2015+%20|%20visionOS%201+%20|%20watchOS%208+-blue.svg)](https://swift.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.txt)
 
 ## Overview
@@ -13,7 +13,7 @@ A Swift package that provides type-safe runtime access to app entitlements for i
 ### Why This Package?
 
 - **macOS**: The [Security framework](https://developer.apple.com/documentation/security) only provides a C API [SecTaskCopyValueForEntitlement](https://developer.apple.com/documentation/security/sectaskcopyvalueforentitlement(_:_:_:)) that's cumbersome to use from Swift. This package wraps it with type-safe properties.
-- **iOS/tvOS/watchOS**: Apple provides no public API at all for runtime entitlement access. This package implements direct access by parsing Mach-O code signatures in memory, without using any private APIs (App Store safe).
+- **iOS/tvOS/visionOS/watchOS**: Apple provides no public API at all for runtime entitlement access. This package implements direct access by parsing Mach-O code signatures in memory, without using any private APIs (App Store safe).
 - **Type Safety**: Swift properties and enums instead of error-prone string-based lookups
 - **Modern Swift**: Built with Swift 6, strict concurrency, and comprehensive documentation
 
@@ -112,11 +112,11 @@ do {
 
 Common errors:
 - **macOS**: `EntitlementsError.failedToCreateSecurityTask` - Invalid code signature or security context
-- **iOS/tvOS/watchOS**: `EntitlementsError.failedToLoadLibrary` or `EntitlementsError.failedToLoadExecutableSymbol` - Mach-O parsing issues
+- **iOS/tvOS/visionOS/watchOS**: `EntitlementsError.failedToLoadLibrary` or `EntitlementsError.failedToLoadExecutableSymbol` - Mach-O parsing issues
 
 ## Requirements
 
-- iOS 15.0+ / macOS 12.0+ / tvOS 15.0+ / watchOS 8.0+
+- iOS 15.0+ / macOS 12.0+ / tvOS 15.0+ / visionOS 1.0+ / watchOS 8.0+
 - Swift 6.0+
 - Xcode 16.0+
 
@@ -166,6 +166,12 @@ Contributions are welcome! Please feel free to:
 - Submit pull requests with improvements
 - Improve documentation or add examples
 - Share feedback on API design
+
+## Data Attribution
+
+Entitlement metadata in this package is derived from publicly available [Apple Developer Documentation](https://developer.apple.com/documentation/bundleresources/entitlements). This package is not affiliated with, endorsed by, or sponsored by Apple Inc.
+
+All entitlement keys, type information, and platform availability data are factual technical specifications extracted from Apple's public documentation. Documentation links reference the original Apple Developer Documentation for detailed information.
 
 ## References
 

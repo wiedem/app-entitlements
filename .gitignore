@@ -11,9 +11,7 @@ xcuserdata/
 
 # Swift Package Manager
 Package.resolved
-.swiftpm/configuration/registries.json
-.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
-.swiftpm/xcode/xcshareddata/
+.swiftpm/
 
 # IDEs
 .vscode/
@@ -26,3 +24,4 @@ docs/
 # Project notes
 Claude.md
 CLAUDE.md
+.backup-macro-files/
