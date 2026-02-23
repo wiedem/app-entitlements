@@ -1,0 +1,3269 @@
+{
+  "_notice" : "Entitlement metadata derived from publicly available Apple Developer Documentation. This data is not affiliated with, endorsed by, or sponsored by Apple Inc. All entitlement keys and technical specifications are factual information extracted from Apple's public documentation. For detailed information, refer to the Apple Developer Documentation URLs provided for each entitlement.",
+  "properties" : {
+    "ios" : [
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.commcenter.fine-grained",
+        "availability" : [
+          {
+            "introducedAt" : "10.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "CoreTelephony",
+        "documentation" : "com.apple.CommCenter.fine-grained",
+        "entitlementKey" : "commCenterFineGrained",
+        "name" : "commCenterFineGrained",
+        "possibleValues" : [
+          "public-cellular-plan",
+          "public-subscriber-info"
+        ],
+        "rawKey" : "com.apple.CommCenter.fine-grained",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.accessibility.merchant-api-control",
+        "availability" : [
+          {
+            "introducedAt" : "18.2",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Accessibility",
+        "documentation" : "Merchant Accessibility API Control",
+        "entitlementKey" : "accessibilityMerchantApiControl",
+        "name" : "accessibilityMerchantApiControl",
+        "rawKey" : "com.apple.developer.accessibility.merchant-api-control",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.accessory-setup-discovery-extension",
+        "availability" : [
+          {
+            "introducedAt" : "18.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "AccessorySetupKit",
+        "documentation" : "com.apple.developer.accessory-setup-discovery-extension",
+        "entitlementKey" : "accessorySetupDiscoveryExtension",
+        "name" : "accessorySetupDiscoveryExtension",
+        "rawKey" : "com.apple.developer.accessory-setup-discovery-extension",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.accessory-transport-extension",
+        "availability" : [
+          {
+            "introducedAt" : "26.2",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Accessory Transport Extension",
+        "documentation" : "com.apple.developer.accessory-transport-extension",
+        "entitlementKey" : "accessoryTransportExtension",
+        "name" : "accessoryTransportExtension",
+        "rawKey" : "com.apple.developer.accessory-transport-extension",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.app-compute-category",
+        "availability" : [
+          {
+            "introducedAt" : "2.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Enterprise",
+        "documentation" : "Increased performance headroom",
+        "entitlementKey" : "appComputeCategory",
+        "name" : "appComputeCategory",
+        "possibleValues" : [
+          "high"
+        ],
+        "rawKey" : "com.apple.developer.app-compute-category",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.app-migration.data-container-access",
+        "availability" : [
+          {
+            "introducedAt" : "26.1",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "AppMigrationKit",
+        "documentation" : "App Identifier for OS Data Transfer",
+        "entitlementKey" : "appMigrationDataContainerAccess",
+        "name" : "appMigrationDataContainerAccess",
+        "rawKey" : "com.apple.developer.app-migration.data-container-access",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.arkit.barcode-detection.allow",
+        "availability" : [
+          {
+            "introducedAt" : "2.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Enterprise",
+        "documentation" : "Spatial barcode and QR code scanning",
+        "entitlementKey" : "arkitBarcodeDetectionAllow",
+        "name" : "arkitBarcodeDetectionAllow",
+        "rawKey" : "com.apple.developer.arkit.barcode-detection.allow",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.arkit.camera-region.allow",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Enterprise",
+        "documentation" : "Camera Region access",
+        "entitlementKey" : "arkitCameraRegionAllow",
+        "name" : "arkitCameraRegionAllow",
+        "rawKey" : "com.apple.developer.arkit.camera-region.allow",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.arkit.main-camera-access.allow",
+        "availability" : [
+          {
+            "introducedAt" : "2.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Enterprise",
+        "documentation" : "Main camera access",
+        "entitlementKey" : "arkitMainCameraAccessAllow",
+        "name" : "arkitMainCameraAccessAllow",
+        "rawKey" : "com.apple.developer.arkit.main-camera-access.allow",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.arkit.object-tracking-parameter-adjustment.allow",
+        "availability" : [
+          {
+            "introducedAt" : "2.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Enterprise",
+        "documentation" : "Object-tracking parameter adjustment",
+        "entitlementKey" : "arkitObjectTrackingParameterAdjustmentAllow",
+        "name" : "arkitObjectTrackingParameterAdjustmentAllow",
+        "rawKey" : "com.apple.developer.arkit.object-tracking-parameter-adjustment.allow",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.arkit.shared-coordinate-space.allow",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Enterprise",
+        "documentation" : "Shared Coordinated Space access",
+        "entitlementKey" : "arkitSharedCoordinateSpaceAllow",
+        "name" : "arkitSharedCoordinateSpaceAllow",
+        "rawKey" : "com.apple.developer.arkit.shared-coordinate-space.allow",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.associated-appclip-app-identifiers",
+        "availability" : [
+          {
+            "introducedAt" : "15.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "App Clips",
+        "documentation" : "com.apple.developer.associated-appclip-app-identifiers",
+        "entitlementKey" : "associatedAppclipAppIdentifiers",
+        "name" : "associatedAppclipAppIdentifiers",
+        "rawKey" : "com.apple.developer.associated-appclip-app-identifiers",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.automated-device-enrollment.add-devices",
+        "availability" : [
+          {
+            "introducedAt" : "16.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Device Management",
+        "documentation" : "com.apple.developer.automated-device-enrollment.add-devices",
+        "entitlementKey" : "automatedDeviceEnrollmentAddDevices",
+        "name" : "automatedDeviceEnrollmentAddDevices",
+        "rawKey" : "com.apple.developer.automated-device-enrollment.add-devices",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.avfoundation.multitasking-camera-access",
+        "availability" : [
+          {
+            "deprecatedAt" : "18.0",
+            "introducedAt" : "13.5",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Media",
+        "documentation" : "com.apple.developer.avfoundation.multitasking-camera-access",
+        "entitlementKey" : "avfoundationMultitaskingCameraAccess",
+        "name" : "avfoundationMultitaskingCameraAccess",
+        "rawKey" : "com.apple.developer.avfoundation.multitasking-camera-access",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.avfoundation.uvc-device-access",
+        "availability" : [
+          {
+            "deprecatedAt" : "26.0",
+            "introducedAt" : "2.1",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Enterprise",
+        "documentation" : "UVC Device Access on visionOS",
+        "entitlementKey" : "avfoundationUvcDeviceAccess",
+        "name" : "avfoundationUvcDeviceAccess",
+        "rawKey" : "com.apple.developer.avfoundation.uvc-device-access",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.background-tasks.continued-processing.gpu",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Background tasks",
+        "documentation" : "Background GPU Access",
+        "entitlementKey" : "backgroundTasksContinuedProcessingGpu",
+        "name" : "backgroundTasksContinuedProcessingGpu",
+        "rawKey" : "com.apple.developer.background-tasks.continued-processing.gpu",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.browser.app-installation",
+        "availability" : [
+          {
+            "introducedAt" : "17.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Web browsers",
+        "documentation" : "com.apple.developer.browser.app-installation",
+        "entitlementKey" : "browserAppInstallation",
+        "name" : "browserAppInstallation",
+        "rawKey" : "com.apple.developer.browser.app-installation",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.calling-app",
+        "availability" : [
+          {
+            "introducedAt" : "18.2",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "11.2",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "LiveCommunicationKit",
+        "documentation" : "Default Calling App",
+        "entitlementKey" : "callingApp",
+        "name" : "callingApp",
+        "rawKey" : "com.apple.developer.calling-app",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.carplay-audio",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "CarPlay",
+        "documentation" : "com.apple.developer.carplay-audio",
+        "entitlementKey" : "carplayAudio",
+        "name" : "carplayAudio",
+        "rawKey" : "com.apple.developer.carplay-audio",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.carplay-charging",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "CarPlay",
+        "documentation" : "com.apple.developer.carplay-charging",
+        "entitlementKey" : "carplayCharging",
+        "name" : "carplayCharging",
+        "rawKey" : "com.apple.developer.carplay-charging",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.carplay-communication",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "CarPlay",
+        "documentation" : "com.apple.developer.carplay-communication",
+        "entitlementKey" : "carplayCommunication",
+        "name" : "carplayCommunication",
+        "rawKey" : "com.apple.developer.carplay-communication",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.carplay-maps",
+        "availability" : [
+          {
+            "introducedAt" : "12.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "CarPlay",
+        "documentation" : "com.apple.developer.carplay-maps",
+        "entitlementKey" : "carplayMaps",
+        "name" : "carplayMaps",
+        "rawKey" : "com.apple.developer.carplay-maps",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.carplay-parking",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "CarPlay",
+        "documentation" : "com.apple.developer.carplay-parking",
+        "entitlementKey" : "carplayParking",
+        "name" : "carplayParking",
+        "rawKey" : "com.apple.developer.carplay-parking",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.carplay-quick-ordering",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "CarPlay",
+        "documentation" : "com.apple.developer.carplay-quick-ordering",
+        "entitlementKey" : "carplayQuickOrdering",
+        "name" : "carplayQuickOrdering",
+        "rawKey" : "com.apple.developer.carplay-quick-ordering",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.carrier-messaging-app",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "TelephonyMessagingKit",
+        "documentation" : "Default Carrier Messaging App",
+        "entitlementKey" : "carrierMessagingApp",
+        "name" : "carrierMessagingApp",
+        "rawKey" : "com.apple.developer.carrier-messaging-app",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.coreml.neural-engine-access",
+        "availability" : [
+          {
+            "deprecatedAt" : "26.0",
+            "introducedAt" : "2.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Enterprise",
+        "documentation" : "Apple Neural Engine access",
+        "entitlementKey" : "coremlNeuralEngineAccess",
+        "name" : "coremlNeuralEngineAccess",
+        "rawKey" : "com.apple.developer.coreml.neural-engine-access",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.default-data-protection",
+        "availability" : [
+          {
+            "introducedAt" : "3.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "9.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "2.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "documentation" : "Data Protection Entitlement",
+        "entitlementKey" : "defaultDataProtection",
+        "name" : "defaultDataProtection",
+        "possibleValues" : [
+          "NSFileProtectionComplete",
+          "NSFileProtectionCompleteUnlessOpen",
+          "NSFileProtectionCompleteUntilFirstUserAuthentication",
+          "NSFileProtectionNone"
+        ],
+        "rawKey" : "com.apple.developer.default-data-protection",
+        "type" : "String"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.device-information.user-assigned-device-name",
+        "availability" : [
+          {
+            "introducedAt" : "16.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "16.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "9.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Privacy",
+        "documentation" : "com.apple.developer.device-information.user-assigned-device-name",
+        "entitlementKey" : "deviceInformationUserAssignedDeviceName",
+        "name" : "deviceInformationUserAssignedDeviceName",
+        "rawKey" : "com.apple.developer.device-information.user-assigned-device-name",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.devicecheck.appattest-environment",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "15.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "documentation" : "App Attest Environment",
+        "entitlementKey" : "deviceCheckAppAttestEnvironment",
+        "name" : "deviceCheckAppAttestEnvironment",
+        "possibleValues" : [
+          "development",
+          "production"
+        ],
+        "rawKey" : "com.apple.developer.devicecheck.appattest-environment",
+        "type" : "String"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.dialing-app",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "LiveCommunicationKit",
+        "documentation" : "Default Dialer App",
+        "entitlementKey" : "dialingApp",
+        "name" : "dialingApp",
+        "rawKey" : "com.apple.developer.dialing-app",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.embedded-web-browser-engine",
+        "availability" : [
+          {
+            "introducedAt" : "17.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Alternative browser engines",
+        "documentation" : "Embedded Browser Engine Entitlement",
+        "entitlementKey" : "embeddedWebBrowserEngine",
+        "name" : "embeddedWebBrowserEngine",
+        "rawKey" : "com.apple.developer.embedded-web-browser-engine",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.embedded-web-browser-engine.engine-association",
+        "availability" : [
+          {
+            "introducedAt" : "26.2",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Alternative browser engines",
+        "documentation" : "Embedded Browser Engine Association Entitlement",
+        "entitlementKey" : "embeddedWebBrowserEngineEngineAssociation",
+        "name" : "embeddedWebBrowserEngineEngineAssociation",
+        "possibleValues" : [
+          "first-party",
+          "third-party"
+        ],
+        "rawKey" : "com.apple.developer.embedded-web-browser-engine.engine-association",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.energykit",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "EnergyKit",
+        "documentation" : "com.apple.developer.energykit",
+        "entitlementKey" : "energykit",
+        "name" : "energykit",
+        "rawKey" : "com.apple.developer.energykit",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.exposure-notification",
+        "availability" : [
+          {
+            "introducedAt" : "13.5",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Exposure notification",
+        "documentation" : "com.apple.developer.exposure-notification",
+        "entitlementKey" : "exposureNotification",
+        "name" : "exposureNotification",
+        "rawKey" : "com.apple.developer.exposure-notification",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.family-controls",
+        "availability" : [
+          {
+            "introducedAt" : "15.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Family controls",
+        "documentation" : "Family Controls",
+        "entitlementKey" : "familyControls",
+        "name" : "familyControls",
+        "rawKey" : "com.apple.developer.family-controls",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.foveated-streaming-session",
+        "availability" : [
+          {
+            "introducedAt" : "26.4",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Vision",
+        "documentation" : "com.apple.developer.foveated-streaming-session",
+        "entitlementKey" : "foveatedStreamingSession",
+        "name" : "foveatedStreamingSession",
+        "rawKey" : "com.apple.developer.foveated-streaming-session",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.health.fall-detection",
+        "availability" : [
+          {
+            "introducedAt" : "13.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "6.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Health",
+        "documentation" : "Fall Detection Notifications",
+        "entitlementKey" : "healthFallDetection",
+        "name" : "healthFallDetection",
+        "rawKey" : "com.apple.developer.health.fall-detection",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.healthkit",
+        "availability" : [
+          {
+            "introducedAt" : "8.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Health",
+        "documentation" : "HealthKit Entitlement",
+        "entitlementKey" : "healthKit",
+        "name" : "healthKit",
+        "rawKey" : "com.apple.developer.healthkit",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.healthkit.access",
+        "availability" : [
+          {
+            "introducedAt" : "8.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Health",
+        "documentation" : "HealthKit Capabilities Entitlement",
+        "entitlementKey" : "healthKitCapabilities",
+        "name" : "healthKitCapabilities",
+        "possibleValues" : [
+          "health-records"
+        ],
+        "rawKey" : "com.apple.developer.healthkit.access",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.healthkit.background-delivery",
+        "availability" : [
+          {
+            "introducedAt" : "15.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "8.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Health",
+        "documentation" : "com.apple.developer.healthkit.background-delivery",
+        "entitlementKey" : "healthKitBackgroundDelivery",
+        "name" : "healthKitBackgroundDelivery",
+        "rawKey" : "com.apple.developer.healthkit.background-delivery",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.healthkit.recalibrate-estimates",
+        "availability" : [
+          {
+            "introducedAt" : "15.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Health",
+        "documentation" : "com.apple.developer.healthkit.recalibrate-estimates",
+        "entitlementKey" : "healthKitRecalibrateEstimates",
+        "name" : "healthKitRecalibrateEstimates",
+        "rawKey" : "com.apple.developer.healthkit.recalibrate-estimates",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.homekit",
+        "availability" : [
+          {
+            "introducedAt" : "8.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "2.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Home automation",
+        "documentation" : "HomeKit Entitlement",
+        "entitlementKey" : "homeKit",
+        "name" : "homeKit",
+        "rawKey" : "com.apple.developer.homekit",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.identity-document-services.document-provider.mobile-document-types",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "IdentityDocumentServices",
+        "documentation" : "Digital Credentials API - Mobile Document Provider",
+        "entitlementKey" : "identityDocumentServicesDocumentProviderMobileDocumentTypes",
+        "name" : "identityDocumentServicesDocumentProviderMobileDocumentTypes",
+        "possibleValues" : [
+          "eu.europa.ec.av.1",
+          "eu.europa.ec.eudi.pid.1",
+          "org.iso.23220.photoid.1",
+          "org.iso.23220.1.jp.mnc",
+          "org.iso.18013.5.1.mDL"
+        ],
+        "rawKey" : "com.apple.developer.identity-document-services.document-provider.mobile-document-types",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.in-app-identity-presentment",
+        "availability" : [
+          {
+            "introducedAt" : "16.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wallet",
+        "documentation" : "com.apple.developer.in-app-identity-presentment",
+        "entitlementKey" : "inAppIdentityPresentment",
+        "name" : "inAppIdentityPresentment",
+        "rawKey" : "com.apple.developer.in-app-identity-presentment",
+        "type" : "PropertyListValue"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.in-app-identity-presentment.merchant-identifiers",
+        "availability" : [
+          {
+            "introducedAt" : "16.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wallet",
+        "documentation" : "com.apple.developer.in-app-identity-presentment.merchant-identifiers",
+        "entitlementKey" : "inAppIdentityPresentmentMerchantIdentifiers",
+        "name" : "inAppIdentityPresentmentMerchantIdentifiers",
+        "rawKey" : "com.apple.developer.in-app-identity-presentment.merchant-identifiers",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.in-app-payments",
+        "availability" : [
+          {
+            "introducedAt" : "6.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "2.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wallet",
+        "documentation" : "Merchant IDs Entitlement",
+        "entitlementKey" : "merchantIdentifiers",
+        "name" : "merchantIdentifiers",
+        "rawKey" : "com.apple.developer.in-app-payments",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.journal.allow",
+        "availability" : [
+          {
+            "introducedAt" : "17.2",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Journaling Suggestions",
+        "documentation" : "com.apple.developer.journal.allow",
+        "entitlementKey" : "journalAllow",
+        "name" : "journalAllow",
+        "possibleValues" : [
+          "suggestions"
+        ],
+        "rawKey" : "com.apple.developer.journal.allow",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.kernel.extended-virtual-addressing",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "14.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Memory",
+        "documentation" : "Extended Virtual Addressing Entitlement",
+        "entitlementKey" : "kernelExtendedVirtualAddressing",
+        "name" : "kernelExtendedVirtualAddressing",
+        "rawKey" : "com.apple.developer.kernel.extended-virtual-addressing",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.kernel.increased-memory-limit",
+        "availability" : [
+          {
+            "introducedAt" : "15.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "2.5",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Memory",
+        "documentation" : "com.apple.developer.kernel.increased-memory-limit",
+        "entitlementKey" : "kernelIncreasedMemoryLimit",
+        "name" : "kernelIncreasedMemoryLimit",
+        "rawKey" : "com.apple.developer.kernel.increased-memory-limit",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.low-latency-streaming",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Vision",
+        "documentation" : "Low-Latency Streaming",
+        "entitlementKey" : "lowLatencyStreaming",
+        "name" : "lowLatencyStreaming",
+        "rawKey" : "com.apple.developer.low-latency-streaming",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.mail-client",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Email clients",
+        "documentation" : "com.apple.developer.mail-client",
+        "entitlementKey" : "mailClient",
+        "name" : "mailClient",
+        "rawKey" : "com.apple.developer.mail-client",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.managed-app-distribution.install-ui",
+        "availability" : [
+          {
+            "introducedAt" : "17.2",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Managed App Distribution",
+        "documentation" : "Managed App Installation UI",
+        "entitlementKey" : "managedAppDistributionInstallUi",
+        "name" : "managedAppDistributionInstallUi",
+        "possibleValues" : [
+          "managed-app"
+        ],
+        "rawKey" : "com.apple.developer.managed-app-distribution.install-ui",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.marketplace.app-installation",
+        "availability" : [
+          {
+            "introducedAt" : "17.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Alternative app marketplaces",
+        "documentation" : "com.apple.developer.marketplace.app-installation",
+        "entitlementKey" : "marketplaceAppInstallation",
+        "name" : "marketplaceAppInstallation",
+        "rawKey" : "com.apple.developer.marketplace.app-installation",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.media-device-discovery-extension",
+        "availability" : [
+          {
+            "introducedAt" : "16.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Media",
+        "documentation" : "Media Device Discovery Extension",
+        "entitlementKey" : "mediaDeviceDiscoveryExtension",
+        "name" : "mediaDeviceDiscoveryExtension",
+        "rawKey" : "com.apple.developer.media-device-discovery-extension",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.memory.transfer_accept",
+        "availability" : [
+          {
+            "introducedAt" : "17.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Alternative browser engines",
+        "documentation" : "com.apple.developer.memory.transfer_accept",
+        "entitlementKey" : "memoryTransferAccept",
+        "name" : "memoryTransferAccept",
+        "rawKey" : "com.apple.developer.memory.transfer_accept",
+        "type" : "String"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.memory.transfer_send",
+        "availability" : [
+          {
+            "introducedAt" : "17.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Alternative browser engines",
+        "documentation" : "com.apple.developer.memory.transfer_send",
+        "entitlementKey" : "memoryTransferSend",
+        "name" : "memoryTransferSend",
+        "rawKey" : "com.apple.developer.memory.transfer_send",
+        "type" : "String"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.messages.critical-messaging",
+        "availability" : [
+          {
+            "introducedAt" : "18.2",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "11.2",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Messages",
+        "documentation" : "Critical Messaging",
+        "entitlementKey" : "messagesCriticalMessaging",
+        "name" : "messagesCriticalMessaging",
+        "rawKey" : "com.apple.developer.messages.critical-messaging",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.messaging-app",
+        "availability" : [
+          {
+            "introducedAt" : "18.2",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Messages",
+        "documentation" : "Default Messaging App",
+        "entitlementKey" : "messagingApp",
+        "name" : "messagingApp",
+        "rawKey" : "com.apple.developer.messaging-app",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.navigation-app",
+        "availability" : [
+          {
+            "introducedAt" : "18.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Navigation",
+        "documentation" : "Default Navigation",
+        "entitlementKey" : "navigationApp",
+        "name" : "navigationApp",
+        "rawKey" : "com.apple.developer.navigation-app",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.nearbyinteraction.dltdoa",
+        "availability" : [
+          {
+            "introducedAt" : "26.1",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "NearbyInteraction",
+        "documentation" : "Nearby Interaction NI DL-TDOA API (development)",
+        "entitlementKey" : "nearbyinteractionDltdoa",
+        "name" : "nearbyinteractionDltdoa",
+        "rawKey" : "com.apple.developer.nearbyinteraction.dltdoa",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.networking.hotspotconfiguration",
+        "availability" : [
+          {
+            "introducedAt" : "11.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wireless interfaces",
+        "documentation" : "Hotspot Configuration Entitlement",
+        "entitlementKey" : "hotspotConfiguration",
+        "name" : "hotspotConfiguration",
+        "rawKey" : "com.apple.developer.networking.HotspotConfiguration",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.networking.hotspothelper",
+        "availability" : [
+          {
+            "introducedAt" : "7.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wireless interfaces",
+        "documentation" : "HotSpot Helper",
+        "entitlementKey" : "networkingHotspotHelper",
+        "name" : "networkingHotspotHelper",
+        "rawKey" : "com.apple.developer.networking.HotspotHelper",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.networking.carrier-constrained.app-optimized",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Networking",
+        "documentation" : "com.apple.developer.networking.carrier-constrained.app-optimized",
+        "entitlementKey" : "networkingCarrierConstrainedAppOptimized",
+        "name" : "networkingCarrierConstrainedAppOptimized",
+        "rawKey" : "com.apple.developer.networking.carrier-constrained.app-optimized",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.networking.carrier-constrained.appcategory",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Networking",
+        "documentation" : "com.apple.developer.networking.carrier-constrained.appcategory",
+        "entitlementKey" : "networkingCarrierConstrainedAppcategory",
+        "name" : "networkingCarrierConstrainedAppcategory",
+        "possibleValues" : [
+          "messaging-8001",
+          "maps-8002",
+          "hiking-adventure-8003",
+          "music-8004",
+          "weather-8005",
+          "voip-8006",
+          "emergency-8007",
+          "light-social-8008",
+          "ride-share-8009",
+          "food-delivery-8010",
+          "news-8011",
+          "productivity-8012",
+          "interactive-productivity-8013",
+          "health-fitness-8014",
+          "payment-8015"
+        ],
+        "rawKey" : "com.apple.developer.networking.carrier-constrained.appcategory",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.networking.manage-thread-network-credentials",
+        "availability" : [
+          {
+            "introducedAt" : "15.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Networking",
+        "documentation" : "com.apple.developer.networking.manage-thread-network-credentials",
+        "entitlementKey" : "networkingManageThreadNetworkCredentials",
+        "name" : "networkingManageThreadNetworkCredentials",
+        "rawKey" : "com.apple.developer.networking.manage-thread-network-credentials",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.networking.multicast",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Networking",
+        "documentation" : "com.apple.developer.networking.multicast",
+        "entitlementKey" : "networkingMulticast",
+        "name" : "networkingMulticast",
+        "rawKey" : "com.apple.developer.networking.multicast",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.networking.multipath",
+        "availability" : [
+          {
+            "introducedAt" : "3.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wireless interfaces",
+        "documentation" : "Multipath Entitlement",
+        "entitlementKey" : "multipath",
+        "name" : "multipath",
+        "rawKey" : "com.apple.developer.networking.multipath",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.networking.slicing.appcategory",
+        "availability" : [
+          {
+            "introducedAt" : "17.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Networking",
+        "documentation" : "5G Network Slicing App Category",
+        "entitlementKey" : "networkingSlicingAppcategory",
+        "name" : "networkingSlicingAppcategory",
+        "possibleValues" : [
+          "gaming-6014",
+          "communication-9000",
+          "streaming-9001"
+        ],
+        "rawKey" : "com.apple.developer.networking.slicing.appcategory",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.networking.slicing.trafficcategory",
+        "availability" : [
+          {
+            "introducedAt" : "17.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Networking",
+        "documentation" : "5G Network Slicing Traffic Category",
+        "entitlementKey" : "networkingSlicingTrafficcategory",
+        "name" : "networkingSlicingTrafficcategory",
+        "possibleValues" : [
+          "defaultslice-1",
+          "video-2",
+          "background-3",
+          "voice-4",
+          "callsignaling-5",
+          "responsivedata-6",
+          "avstreaming-7",
+          "responsiveav-8"
+        ],
+        "rawKey" : "com.apple.developer.networking.slicing.trafficcategory",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.networking.wifi-info",
+        "availability" : [
+          {
+            "introducedAt" : "12.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wireless interfaces",
+        "documentation" : "Access Wi-Fi Information Entitlement",
+        "entitlementKey" : "accessWiFiInformation",
+        "name" : "accessWiFiInformation",
+        "rawKey" : "com.apple.developer.networking.wifi-info",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.nfc.hce",
+        "availability" : [
+          {
+            "introducedAt" : "17.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wireless interfaces",
+        "documentation" : "com.apple.developer.nfc.hce",
+        "entitlementKey" : "nfcHce",
+        "name" : "nfcHce",
+        "rawKey" : "com.apple.developer.nfc.hce",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.nfc.hce.default-contactless-app",
+        "availability" : [
+          {
+            "introducedAt" : "17.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wireless interfaces",
+        "documentation" : "com.apple.developer.nfc.hce.default-contactless-app",
+        "entitlementKey" : "nfcHceDefaultContactlessApp",
+        "name" : "nfcHceDefaultContactlessApp",
+        "rawKey" : "com.apple.developer.nfc.hce.default-contactless-app",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.nfc.hce.iso7816.select-identifier-prefixes",
+        "availability" : [
+          {
+            "introducedAt" : "17.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wireless interfaces",
+        "documentation" : "com.apple.developer.nfc.hce.iso7816.select-identifier-prefixes",
+        "entitlementKey" : "nfcHceIsoSelectIdentifierPrefixes",
+        "name" : "nfcHceIsoSelectIdentifierPrefixes",
+        "rawKey" : "com.apple.developer.nfc.hce.iso7816.select-identifier-prefixes",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.nfc.readersession.felica.systemcodes",
+        "availability" : [
+          {
+            "introducedAt" : "13.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wireless interfaces",
+        "documentation" : "ISO18092 system codes for NFC Tag Reader Session",
+        "entitlementKey" : "nfcReadersessionFelicaSystemcodes",
+        "name" : "nfcReadersessionFelicaSystemcodes",
+        "rawKey" : "com.apple.developer.nfc.readersession.felica.systemcodes",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.nfc.readersession.formats",
+        "availability" : [
+          {
+            "introducedAt" : "11.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wireless interfaces",
+        "documentation" : "Near Field Communication Tag Reader Session Formats Entitlement",
+        "entitlementKey" : "nearFieldCommunicationTagReaderSessionFormats",
+        "name" : "nearFieldCommunicationTagReaderSessionFormats",
+        "possibleValues" : [
+          "TAG"
+        ],
+        "rawKey" : "com.apple.developer.nfc.readersession.formats",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.nfc.readersession.iso7816.select-identifiers",
+        "availability" : [
+          {
+            "introducedAt" : "13.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wireless interfaces",
+        "documentation" : "ISO7816 application identifiers for NFC Tag Reader Session",
+        "entitlementKey" : "nfcReadersessionIsoSelectIdentifiers",
+        "name" : "nfcReadersessionIsoSelectIdentifiers",
+        "rawKey" : "com.apple.developer.nfc.readersession.iso7816.select-identifiers",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.on-demand-install-capable",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "App Clips",
+        "documentation" : "com.apple.developer.on-demand-install-capable",
+        "entitlementKey" : "onDemandInstallCapable",
+        "name" : "onDemandInstallCapable",
+        "rawKey" : "com.apple.developer.on-demand-install-capable",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.parent-application-identifiers",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "App Clips",
+        "documentation" : "Parent Application Identifiers Entitlement",
+        "entitlementKey" : "parentApplicationIdentifiers",
+        "name" : "parentApplicationIdentifiers",
+        "rawKey" : "com.apple.developer.parent-application-identifiers",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.pass-type-identifiers",
+        "availability" : [
+          {
+            "introducedAt" : "6.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "2.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wallet",
+        "documentation" : "Pass Type IDs Entitlement",
+        "entitlementKey" : "passTypeIdentifiers",
+        "name" : "passTypeIdentifiers",
+        "rawKey" : "com.apple.developer.pass-type-identifiers",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.passkit.pass-presentation-suppression",
+        "availability" : [
+          {
+            "introducedAt" : "15.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "8.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "PassKit",
+        "documentation" : "Pass Presentation Suppression",
+        "entitlementKey" : "passkitPassPresentationSuppression",
+        "name" : "passkitPassPresentationSuppression",
+        "rawKey" : "com.apple.developer.passkit.pass-presentation-suppression",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.protected-content",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Enterprise",
+        "documentation" : "App-Protected Content",
+        "entitlementKey" : "protectedContent",
+        "name" : "protectedContent",
+        "rawKey" : "com.apple.developer.protected-content",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.proximity-reader.identity.display",
+        "availability" : [
+          {
+            "introducedAt" : "17.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wallet",
+        "documentation" : "ID Verifier - Display Only",
+        "entitlementKey" : "proximityReaderIdentityDisplay",
+        "name" : "proximityReaderIdentityDisplay",
+        "rawKey" : "com.apple.developer.proximity-reader.identity.display",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.proximity-reader.identity.read",
+        "availability" : [
+          {
+            "introducedAt" : "17.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wallet",
+        "documentation" : "ID Verifier - Data Transfer",
+        "entitlementKey" : "proximityReaderIdentityRead",
+        "name" : "proximityReaderIdentityRead",
+        "rawKey" : "com.apple.developer.proximity-reader.identity.read",
+        "type" : "PropertyListValue"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.push-to-talk",
+        "availability" : [
+          {
+            "introducedAt" : "16.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Push to Talk",
+        "documentation" : "Push to Talk Entitlement",
+        "entitlementKey" : "pushToTalk",
+        "name" : "pushToTalk",
+        "rawKey" : "com.apple.developer.push-to-talk",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.screen-capture.include-passthrough",
+        "availability" : [
+          {
+            "introducedAt" : "2.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Enterprise",
+        "documentation" : "Passthrough in screen capture",
+        "entitlementKey" : "screenCaptureIncludePassthrough",
+        "name" : "screenCaptureIncludePassthrough",
+        "rawKey" : "com.apple.developer.screen-capture.include-passthrough",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.secure-element-credential",
+        "availability" : [
+          {
+            "introducedAt" : "18.1",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "SecureElementCredential",
+        "documentation" : "com.apple.developer.secure-element-credential",
+        "entitlementKey" : "secureElementCredential",
+        "name" : "secureElementCredential",
+        "rawKey" : "com.apple.developer.secure-element-credential",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.secure-element-credential.default-contactless-app",
+        "availability" : [
+          {
+            "introducedAt" : "18.1",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "SecureElementCredential",
+        "documentation" : "com.apple.developer.secure-element-credential.default-contactless-app",
+        "entitlementKey" : "secureElementCredentialDefaultContactlessApp",
+        "name" : "secureElementCredentialDefaultContactlessApp",
+        "rawKey" : "com.apple.developer.secure-element-credential.default-contactless-app",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.sensitivecontentanalysis.client",
+        "availability" : [
+          {
+            "introducedAt" : "17.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Sensitive Content Analysis",
+        "documentation" : "com.apple.developer.sensitivecontentanalysis.client",
+        "entitlementKey" : "sensitivecontentanalysisClient",
+        "name" : "sensitivecontentanalysisClient",
+        "possibleValues" : [
+          "analysis"
+        ],
+        "rawKey" : "com.apple.developer.sensitivecontentanalysis.client",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.sensorkit.reader.allow",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Sensors",
+        "documentation" : "com.apple.developer.sensorkit.reader.allow",
+        "entitlementKey" : "sensorkitReaderAllow",
+        "name" : "sensorkitReaderAllow",
+        "possibleValues" : [
+          "on-wrist",
+          "ambient-light-sensor",
+          "motion-accelerometer",
+          "motion-rotation-rate",
+          "visits",
+          "pedometer",
+          "device-usage",
+          "messages-usage",
+          "phone-usage",
+          "keyboard-metrics",
+          "speech-metrics-telephony",
+          "speech-metrics-siri",
+          "ambient-pressure"
+        ],
+        "rawKey" : "com.apple.developer.sensorkit.reader.allow",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.severe-vehicular-crash-event",
+        "availability" : [
+          {
+            "introducedAt" : "16.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.1",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "SafetyKit",
+        "documentation" : "com.apple.developer.severe-vehicular-crash-event",
+        "entitlementKey" : "severeVehicularCrashEvent",
+        "name" : "severeVehicularCrashEvent",
+        "rawKey" : "com.apple.developer.severe-vehicular-crash-event",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.side-button-access.allow",
+        "availability" : [
+          {
+            "introducedAt" : "26.2",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "AppIntents",
+        "documentation" : "Side Button Invocation",
+        "entitlementKey" : "sideButtonAccessAllow",
+        "name" : "sideButtonAccessAllow",
+        "rawKey" : "com.apple.developer.side-button-access.allow",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.siri",
+        "availability" : [
+          {
+            "introducedAt" : "10.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "3.2",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Siri",
+        "documentation" : "Siri Entitlement",
+        "entitlementKey" : "siri",
+        "name" : "siri",
+        "rawKey" : "com.apple.developer.siri",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.storekit.external-link.account",
+        "availability" : [
+          {
+            "introducedAt" : "15.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "16.4",
+            "platform" : "tvOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "StoreKit",
+        "documentation" : "com.apple.developer.storekit.external-link.account",
+        "entitlementKey" : "storekitExternalLinkAccount",
+        "name" : "storekitExternalLinkAccount",
+        "rawKey" : "com.apple.developer.storekit.external-link.account",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.storekit.external-purchase-link-streaming",
+        "availability" : [
+          {
+            "introducedAt" : "18.2",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "StoreKit",
+        "documentation" : "com.apple.developer.storekit.external-purchase-link-streaming",
+        "entitlementKey" : "storekitExternalPurchaseLinkStreaming",
+        "name" : "storekitExternalPurchaseLinkStreaming",
+        "rawKey" : "com.apple.developer.storekit.external-purchase-link-streaming",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.translation-app",
+        "availability" : [
+          {
+            "introducedAt" : "18.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Translation",
+        "documentation" : "Translation",
+        "entitlementKey" : "translationApp",
+        "name" : "translationApp",
+        "rawKey" : "com.apple.developer.translation-app",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.upi-device-validation",
+        "availability" : [
+          {
+            "introducedAt" : "17.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "MessageUI",
+        "documentation" : "com.apple.developer.upi-device-validation",
+        "entitlementKey" : "upiDeviceValidation",
+        "name" : "upiDeviceValidation",
+        "rawKey" : "com.apple.developer.upi-device-validation",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.user-management",
+        "availability" : [
+          {
+            "introducedAt" : "13.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "TV",
+        "documentation" : "User Management Entitlement",
+        "entitlementKey" : "userManagement",
+        "name" : "userManagement",
+        "possibleValues" : [
+          "get-current-user",
+          "runs-as-current-user",
+          "runs-as-current-user-with-user-independent-keychain"
+        ],
+        "rawKey" : "com.apple.developer.user-management",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.web-browser",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Web browsers",
+        "documentation" : "com.apple.developer.web-browser",
+        "entitlementKey" : "webBrowser",
+        "name" : "webBrowser",
+        "rawKey" : "com.apple.developer.web-browser",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.web-browser-engine.host",
+        "availability" : [
+          {
+            "introducedAt" : "17.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Alternative browser engines",
+        "documentation" : "Web Browser Engine Entitlement",
+        "entitlementKey" : "webBrowserEngineHost",
+        "name" : "webBrowserEngineHost",
+        "rawKey" : "com.apple.developer.web-browser-engine.host",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.web-browser-engine.networking",
+        "availability" : [
+          {
+            "introducedAt" : "17.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Alternative browser engines",
+        "documentation" : "com.apple.developer.web-browser-engine.networking",
+        "entitlementKey" : "webBrowserEngineNetworking",
+        "name" : "webBrowserEngineNetworking",
+        "rawKey" : "com.apple.developer.web-browser-engine.networking",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.web-browser-engine.rendering",
+        "availability" : [
+          {
+            "introducedAt" : "17.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Alternative browser engines",
+        "documentation" : "com.apple.developer.web-browser-engine.rendering",
+        "entitlementKey" : "webBrowserEngineRendering",
+        "name" : "webBrowserEngineRendering",
+        "rawKey" : "com.apple.developer.web-browser-engine.rendering",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.web-browser-engine.restrict.notifyd",
+        "availability" : [
+          {
+            "introducedAt" : "17.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Alternative browser engines",
+        "documentation" : "com.apple.developer.web-browser-engine.restrict.notifyd",
+        "entitlementKey" : "webBrowserEngineRestrictNotifyd",
+        "name" : "webBrowserEngineRestrictNotifyd",
+        "rawKey" : "com.apple.developer.web-browser-engine.restrict.notifyd",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.web-browser-engine.webcontent",
+        "availability" : [
+          {
+            "introducedAt" : "17.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Alternative browser engines",
+        "documentation" : "com.apple.developer.web-browser-engine.webcontent",
+        "entitlementKey" : "webBrowserEngineWebcontent",
+        "name" : "webBrowserEngineWebcontent",
+        "rawKey" : "com.apple.developer.web-browser-engine.webcontent",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.wifi-aware",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wi-Fi Aware",
+        "documentation" : "com.apple.developer.wifi-aware",
+        "entitlementKey" : "wifiAware",
+        "name" : "wifiAware",
+        "possibleValues" : [
+          "Subscribe",
+          "Publish"
+        ],
+        "rawKey" : "com.apple.developer.wifi-aware",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.wifi-infrastructure",
+        "availability" : [
+          {
+            "introducedAt" : "26.2",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wi-Fi Infrastructure",
+        "documentation" : "com.apple.developer.wifi-infrastructure",
+        "entitlementKey" : "wifiInfrastructure",
+        "name" : "wifiInfrastructure",
+        "possibleValues" : [
+          "WiFiNetworkSharing"
+        ],
+        "rawKey" : "com.apple.developer.wifi-infrastructure",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.window-body-follow",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Enterprise",
+        "documentation" : "Follow Mode for Windows",
+        "entitlementKey" : "windowBodyFollow",
+        "name" : "windowBodyFollow",
+        "rawKey" : "com.apple.developer.window-body-follow",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.wireless-insights.service-predictions",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wireless insights",
+        "documentation" : "Wireless Insights Service Predictions",
+        "entitlementKey" : "wirelessInsightsServicePredictions",
+        "name" : "wirelessInsightsServicePredictions",
+        "rawKey" : "com.apple.developer.wireless-insights.service-predictions",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.external-accessory.wireless-configuration",
+        "availability" : [
+          {
+            "introducedAt" : "3.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Wireless interfaces",
+        "documentation" : "Wireless Accessory Configuration Entitlement",
+        "entitlementKey" : "wirelessAccessoryConfiguration",
+        "name" : "wirelessAccessoryConfiguration",
+        "rawKey" : "com.apple.external-accessory.wireless-configuration",
+        "type" : "Bool"
+      }
+    ],
+    "macOS" : [
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.associated-domains.applinks.read-write",
+        "availability" : [
+          {
+            "introducedAt" : "10.15",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Networking",
+        "documentation" : "com.apple.developer.associated-domains.applinks.read-write",
+        "entitlementKey" : "associatedDomainsApplinksReadWrite",
+        "name" : "associatedDomainsApplinksReadWrite",
+        "rawKey" : "com.apple.developer.associated-domains.applinks.read-write",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.fskit.fsmodule",
+        "availability" : [
+          {
+            "introducedAt" : "15.4",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "FSKit",
+        "documentation" : "FSKit Module",
+        "entitlementKey" : "fskitFsmodule",
+        "name" : "fskitFsmodule",
+        "rawKey" : "com.apple.developer.fskit.fsmodule",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.networking.vmnet",
+        "availability" : [
+          {
+            "introducedAt" : "14.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Networking",
+        "documentation" : "com.apple.developer.networking.vmnet",
+        "entitlementKey" : "networkingVmnet",
+        "name" : "networkingVmnet",
+        "rawKey" : "com.apple.developer.networking.vmnet",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.persistent-content-capture",
+        "availability" : [
+          {
+            "introducedAt" : "14.4",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "ScreenCaptureKit",
+        "documentation" : "Persistent Content Capture",
+        "entitlementKey" : "persistentContentCapture",
+        "name" : "persistentContentCapture",
+        "rawKey" : "com.apple.developer.persistent-content-capture",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.web-browser.public-key-credential",
+        "availability" : [
+          {
+            "introducedAt" : "13.3",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Web browsers",
+        "documentation" : "com.apple.developer.web-browser.public-key-credential",
+        "entitlementKey" : "webBrowserPublicKeyCredential",
+        "name" : "webBrowserPublicKeyCredential",
+        "rawKey" : "com.apple.developer.web-browser.public-key-credential",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.security.hypervisor",
+        "availability" : [
+          {
+            "introducedAt" : "11.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Hypervisor",
+        "documentation" : "com.apple.security.hypervisor",
+        "entitlementKey" : "hypervisor",
+        "name" : "hypervisor",
+        "rawKey" : "com.apple.security.hypervisor",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.security.virtualization",
+        "availability" : [
+          {
+            "introducedAt" : "11.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Hypervisor",
+        "documentation" : "com.apple.security.virtualization",
+        "entitlementKey" : "virtualization",
+        "name" : "virtualization",
+        "rawKey" : "com.apple.security.virtualization",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.vm.device-access",
+        "availability" : [
+          {
+            "introducedAt" : "10.10",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Hypervisor",
+        "documentation" : "com.apple.vm.device-access",
+        "entitlementKey" : "vmDeviceAccess",
+        "name" : "vmDeviceAccess",
+        "rawKey" : "com.apple.vm.device-access",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.vm.networking",
+        "availability" : [
+          {
+            "introducedAt" : "10.10",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Hypervisor",
+        "documentation" : "com.apple.vm.networking",
+        "entitlementKey" : "vmNetworking",
+        "name" : "vmNetworking",
+        "rawKey" : "com.apple.vm.networking",
+        "type" : "Bool"
+      }
+    ],
+    "shared" : [
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.classkit-environment",
+        "availability" : [
+          {
+            "introducedAt" : "11.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "11.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Education",
+        "documentation" : "ClassKit Environment Entitlement",
+        "entitlementKey" : "classKitEnvironment",
+        "name" : "classKitEnvironment",
+        "possibleValues" : [
+          "development",
+          "production"
+        ],
+        "rawKey" : "com.apple.developer.ClassKit-environment",
+        "type" : "String"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.applesignin",
+        "availability" : [
+          {
+            "introducedAt" : "13.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.15",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "13.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "6.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Authentication",
+        "documentation" : "Sign in with Apple Entitlement",
+        "entitlementKey" : "signInWithApple",
+        "name" : "signInWithApple",
+        "possibleValues" : [
+          "Default"
+        ],
+        "rawKey" : "com.apple.developer.applesignin",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.associated-domains",
+        "availability" : [
+          {
+            "introducedAt" : "9.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.15",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "9.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "6.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Networking",
+        "documentation" : "Associated Domains Entitlement",
+        "entitlementKey" : "associatedDomains",
+        "name" : "associatedDomains",
+        "rawKey" : "com.apple.developer.associated-domains",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.authentication-services.account-creation-requires-phone-number",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "26.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "26.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Authentication",
+        "documentation" : "Account Creation Requires Phone Number",
+        "entitlementKey" : "authenticationServicesAccountCreationRequiresPhoneNumber",
+        "name" : "authenticationServicesAccountCreationRequiresPhoneNumber",
+        "rawKey" : "com.apple.developer.authentication-services.account-creation-requires-phone-number",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.authentication-services.autofill-credential-provider",
+        "availability" : [
+          {
+            "introducedAt" : "12.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "11.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Authentication",
+        "documentation" : "AutoFill Credential Provider Entitlement",
+        "entitlementKey" : "autoFillCredentialProvider",
+        "name" : "autoFillCredentialProvider",
+        "rawKey" : "com.apple.developer.authentication-services.autofill-credential-provider",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.automatic-assessment-configuration",
+        "availability" : [
+          {
+            "introducedAt" : "13.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.15.4",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Education",
+        "documentation" : "com.apple.developer.automatic-assessment-configuration",
+        "entitlementKey" : "automaticAssessmentConfiguration",
+        "name" : "automaticAssessmentConfiguration",
+        "rawKey" : "com.apple.developer.automatic-assessment-configuration",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.contacts.notes",
+        "availability" : [
+          {
+            "introducedAt" : "13.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "13.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Contacts",
+        "documentation" : "com.apple.developer.contacts.notes",
+        "entitlementKey" : "contactsNotes",
+        "name" : "contactsNotes",
+        "rawKey" : "com.apple.developer.contacts.notes",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.coremotion.head-pose",
+        "availability" : [
+          {
+            "introducedAt" : "18.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "15.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "18.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Media",
+        "documentation" : "com.apple.developer.coremotion.head-pose",
+        "entitlementKey" : "coremotionHeadPose",
+        "name" : "coremotionHeadPose",
+        "rawKey" : "com.apple.developer.coremotion.head-pose",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.declared-age-range",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "26.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Declared Age Range",
+        "documentation" : "com.apple.developer.declared-age-range",
+        "entitlementKey" : "declaredAgeRange",
+        "name" : "declaredAgeRange",
+        "rawKey" : "com.apple.developer.declared-age-range",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.enrollment-sso-capable",
+        "availability" : [
+          {
+            "introducedAt" : "13.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.15",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Device Management",
+        "documentation" : "Enrollment Single Sign On",
+        "entitlementKey" : "enrollmentSsoCapable",
+        "name" : "enrollmentSsoCapable",
+        "rawKey" : "com.apple.developer.enrollment-sso-capable",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.fileprovider.testing-mode",
+        "availability" : [
+          {
+            "introducedAt" : "11.3",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "File provider",
+        "documentation" : "com.apple.developer.fileprovider.testing-mode",
+        "entitlementKey" : "fileproviderTestingMode",
+        "name" : "fileproviderTestingMode",
+        "rawKey" : "com.apple.developer.fileprovider.testing-mode",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.financekit",
+        "availability" : [
+          {
+            "introducedAt" : "13.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.15",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "FinanceKit",
+        "documentation" : "FinanceKit",
+        "entitlementKey" : "financeKit",
+        "name" : "financeKit",
+        "rawKey" : "com.apple.developer.financekit",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.foundation-model-adapter",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "26.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "26.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Foundation Models",
+        "documentation" : "com.apple.developer.foundation-model-adapter",
+        "entitlementKey" : "foundationModelAdapter",
+        "name" : "foundationModelAdapter",
+        "rawKey" : "com.apple.developer.foundation-model-adapter",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.game-center",
+        "availability" : [
+          {
+            "introducedAt" : "15.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.8",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Games",
+        "documentation" : "Game Center Entitlement",
+        "entitlementKey" : "gameCenter",
+        "name" : "gameCenter",
+        "rawKey" : "com.apple.developer.game-center",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.group-session",
+        "availability" : [
+          {
+            "introducedAt" : "15.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "12.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "15.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Group activities",
+        "documentation" : "com.apple.developer.group-session",
+        "entitlementKey" : "groupSession",
+        "name" : "groupSession",
+        "rawKey" : "com.apple.developer.group-session",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.icloud-container-development-container-identifiers",
+        "availability" : [
+          {
+            "introducedAt" : "3.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.7",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "9.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "2.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "iCloud",
+        "documentation" : "com.apple.developer.icloud-container-development-container-identifiers",
+        "entitlementKey" : "iCloudContainerDevelopmentContainerIdentifiers",
+        "name" : "iCloudContainerDevelopmentContainerIdentifiers",
+        "rawKey" : "com.apple.developer.icloud-container-development-container-identifiers",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.icloud-container-environment",
+        "availability" : [
+          {
+            "introducedAt" : "3.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.7",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "9.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "2.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "iCloud",
+        "documentation" : "com.apple.developer.icloud-container-environment",
+        "entitlementKey" : "iCloudContainerEnvironment",
+        "name" : "iCloudContainerEnvironment",
+        "possibleValues" : [
+          "Development",
+          "Production"
+        ],
+        "rawKey" : "com.apple.developer.icloud-container-environment",
+        "type" : "String"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.icloud-container-identifiers",
+        "availability" : [
+          {
+            "introducedAt" : "3.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.7",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "9.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "2.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "iCloud",
+        "documentation" : "iCloud Container Identifiers Entitlement",
+        "entitlementKey" : "iCloudContainerIdentifiers",
+        "name" : "iCloudContainerIdentifiers",
+        "rawKey" : "com.apple.developer.icloud-container-identifiers",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.icloud-extended-share-access",
+        "availability" : [
+          {
+            "introducedAt" : "26.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "26.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "26.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "26.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "26.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "CloudKit",
+        "documentation" : "com.apple.developer.icloud-extended-share-access",
+        "entitlementKey" : "iCloudExtendedShareAccess",
+        "name" : "iCloudExtendedShareAccess",
+        "possibleValues" : [
+          "InProcessShareOwnerParticipantInfo",
+          "InProcessOneTimeLinks",
+          "InProcessShareAccessRequests"
+        ],
+        "rawKey" : "com.apple.developer.icloud-extended-share-access",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.icloud-services",
+        "availability" : [
+          {
+            "introducedAt" : "3.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.7",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "9.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "2.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "iCloud",
+        "documentation" : "iCloud Services Entitlement",
+        "entitlementKey" : "iCloudServices",
+        "name" : "iCloudServices",
+        "possibleValues" : [
+          "CloudDocuments",
+          "CloudKit",
+          "CloudKit-Anonymous"
+        ],
+        "rawKey" : "com.apple.developer.icloud-services",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.location.push",
+        "availability" : [
+          {
+            "introducedAt" : "7.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.9",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Location",
+        "documentation" : "Location Push Service Extension",
+        "entitlementKey" : "locationPush",
+        "name" : "locationPush",
+        "rawKey" : "com.apple.developer.location.push",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.matter.allow-setup-payload",
+        "availability" : [
+          {
+            "introducedAt" : "16.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "13.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "16.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "9.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Home automation",
+        "documentation" : "Matter Allow Setup Payload",
+        "entitlementKey" : "matterAllowSetupPayload",
+        "name" : "matterAllowSetupPayload",
+        "rawKey" : "com.apple.developer.matter.allow-setup-payload",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.networking.networkextension",
+        "availability" : [
+          {
+            "introducedAt" : "9.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.11",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "17.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Networking",
+        "documentation" : "Network Extensions Entitlement",
+        "entitlementKey" : "networkExtensions",
+        "name" : "networkExtensions",
+        "possibleValues" : [
+          "dns-proxy",
+          "app-proxy-provider",
+          "content-filter-provider",
+          "packet-tunnel-provider",
+          "dns-proxy-systemextension",
+          "app-proxy-provider-systemextension",
+          "content-filter-provider-systemextension",
+          "packet-tunnel-provider-systemextension",
+          "dns-settings",
+          "app-push-provider",
+          "relay"
+        ],
+        "rawKey" : "com.apple.developer.networking.networkextension",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.networking.vpn.api",
+        "availability" : [
+          {
+            "introducedAt" : "8.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.10",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Networking",
+        "documentation" : "Personal VPN Entitlement",
+        "entitlementKey" : "personalVPN",
+        "name" : "personalVPN",
+        "possibleValues" : [
+          "allow-vpn"
+        ],
+        "rawKey" : "com.apple.developer.networking.vpn.api",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.spatial-audio.profile-access",
+        "availability" : [
+          {
+            "introducedAt" : "18.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "15.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "18.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "2.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Media",
+        "documentation" : "com.apple.developer.spatial-audio.profile-access",
+        "entitlementKey" : "spatialAudioProfileAccess",
+        "name" : "spatialAudioProfileAccess",
+        "rawKey" : "com.apple.developer.spatial-audio.profile-access",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.storekit.custom-purchase-link.allowed-regions",
+        "availability" : [
+          {
+            "introducedAt" : "26.2",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "26.2",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "26.2",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "26.2",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "26.2",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "StoreKit",
+        "documentation" : "StoreKit External Custom Purchase Link Regions",
+        "entitlementKey" : "storekitCustomPurchaseLinkAllowedRegions",
+        "name" : "storekitCustomPurchaseLinkAllowedRegions",
+        "rawKey" : "com.apple.developer.storekit.custom-purchase-link.allowed-regions",
+        "type" : "[String]"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.storekit.external-purchase",
+        "availability" : [
+          {
+            "introducedAt" : "15.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "14.4",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "17.4",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.1",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.4",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "StoreKit",
+        "documentation" : "com.apple.developer.storekit.external-purchase",
+        "entitlementKey" : "storekitExternalPurchase",
+        "name" : "storekitExternalPurchase",
+        "rawKey" : "com.apple.developer.storekit.external-purchase",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.storekit.external-purchase-link",
+        "availability" : [
+          {
+            "introducedAt" : "15.4",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "14.4",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "17.4",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.1",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.4",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "StoreKit",
+        "documentation" : "com.apple.developer.storekit.external-purchase-link",
+        "entitlementKey" : "storekitExternalPurchaseLink",
+        "name" : "storekitExternalPurchaseLink",
+        "rawKey" : "com.apple.developer.storekit.external-purchase-link",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.sustained-execution",
+        "availability" : [
+          {
+            "introducedAt" : "17.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "15.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Metal",
+        "documentation" : "com.apple.developer.sustained-execution",
+        "entitlementKey" : "sustainedExecution",
+        "name" : "sustainedExecution",
+        "rawKey" : "com.apple.developer.sustained-execution",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.ubiquity-kvstore-identifier",
+        "availability" : [
+          {
+            "introducedAt" : "3.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.7",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "9.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "2.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "iCloud",
+        "documentation" : "iCloud Key-Value Store Entitlement",
+        "entitlementKey" : "iCloudKeyValueStore",
+        "name" : "iCloudKeyValueStore",
+        "rawKey" : "com.apple.developer.ubiquity-kvstore-identifier",
+        "type" : "String"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.usernotifications.critical-alerts",
+        "availability" : [
+          {
+            "introducedAt" : "5.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.14",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "12.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "5.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Notifications",
+        "documentation" : "Critical Alerts",
+        "entitlementKey" : "usernotificationsCriticalAlerts",
+        "name" : "usernotificationsCriticalAlerts",
+        "rawKey" : "com.apple.developer.usernotifications.critical-alerts",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.usernotifications.filtering",
+        "availability" : [
+          {
+            "introducedAt" : "13.3",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "11.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Notifications",
+        "documentation" : "com.apple.developer.usernotifications.filtering",
+        "entitlementKey" : "usernotificationsFiltering",
+        "name" : "usernotificationsFiltering",
+        "rawKey" : "com.apple.developer.usernotifications.filtering",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.video-subscriber-single-sign-on",
+        "availability" : [
+          {
+            "introducedAt" : "10.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.14",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "TV",
+        "documentation" : "com.apple.developer.video-subscriber-single-sign-on",
+        "entitlementKey" : "videoSubscriberSingleSignOn",
+        "name" : "videoSubscriberSingleSignOn",
+        "rawKey" : "com.apple.developer.video-subscriber-single-sign-on",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.developer.weatherkit",
+        "availability" : [
+          {
+            "introducedAt" : "16.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "13.0",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "16.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "9.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "WeatherKit",
+        "documentation" : "WeatherKit Entitlement",
+        "entitlementKey" : "weatherKit",
+        "name" : "weatherKit",
+        "rawKey" : "com.apple.developer.weatherkit",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/com.apple.smoot.subscriptionservice",
+        "availability" : [
+          {
+            "introducedAt" : "10.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.14",
+            "platform" : "macOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "TV",
+        "documentation" : "com.apple.smoot.subscriptionservice",
+        "entitlementKey" : "smootSubscriptionservice",
+        "name" : "smootSubscriptionservice",
+        "rawKey" : "com.apple.smoot.subscriptionservice",
+        "type" : "Bool"
+      },
+      {
+        "appleDocUrl" : "https:\/\/developer.apple.com\/documentation\/bundleresources\/entitlements\/aps-environment",
+        "availability" : [
+          {
+            "introducedAt" : "10.0",
+            "platform" : "iOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.0",
+            "platform" : "tvOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "1.0",
+            "platform" : "visionOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "3.0",
+            "platform" : "watchOS",
+            "unavailable" : false
+          },
+          {
+            "introducedAt" : "10.14",
+            "platform" : "macOS",
+            "unavailable" : false
+          }
+        ],
+        "category" : "Notifications",
+        "documentation" : "APS Environment Entitlement",
+        "entitlementKey" : "apsEnvironment",
+        "name" : "apsEnvironment",
+        "possibleValues" : [
+          "development",
+          "production"
+        ],
+        "rawKey" : "aps-environment",
+        "type" : "String"
+      }
+    ]
+  },
+  "version" : "1.0"
+}

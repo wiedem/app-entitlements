@@ -1,5 +1,4 @@
 // swift-tools-version: 6.0
-import CompilerPluginSupport
 import PackageDescription
 
 let commonSwiftSettings: [SwiftSetting] = [
@@ -24,59 +23,26 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-asn1.git", .upToNextMajor(from: "1.5.0")),
-        .package(url: "https://github.com/swiftlang/swift-syntax.git", from: "600.0.0"),
+        .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.5.0"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
     ],
     targets: [
-        // Core types (shared between macro and main library)
-        .target(
-            name: "AppEntitlementsCore",
-            dependencies: [],
-            swiftSettings: commonSwiftSettings
-        ),
-        // Macro implementation (compiler plugin)
-        .macro(
-            name: "AppEntitlementsMacrosPlugin",
-            dependencies: [
-                .product(
-                    name: "SwiftSyntaxMacros",
-                    package: "swift-syntax"
-                ),
-                .product(
-                    name: "SwiftCompilerPlugin",
-                    package: "swift-syntax"
-                ),
-                "AppEntitlementsCore",
-            ],
-            swiftSettings: commonSwiftSettings
-        ),
-        // Macro definitions (public API)
-        .target(
-            name: "AppEntitlementsMacros",
-            dependencies: [
-                .target(name: "AppEntitlementsMacrosPlugin"),
-                "AppEntitlementsCore",
-            ],
-            swiftSettings: commonSwiftSettings
-        ),
         // Main library target
         .target(
             name: "AppEntitlements",
             dependencies: [
                 .product(name: "SwiftASN1", package: "swift-asn1"),
-                "AppEntitlementsMacros",
-                "AppEntitlementsCore",
             ],
-            path: "Sources",
-            exclude: [
-                "AppEntitlementsMacros",
-                "AppEntitlementsMacrosPlugin",
-                "AppEntitlementsCore",
-            ],
+            path: "Sources/AppEntitlements",
             resources: [
                 .process("Resources/PrivacyInfo.xcprivacy"),
+                .process("Resources/entitlements.json"),
+                .process("Resources/entitlement-type-mappings.json"),
             ],
-            swiftSettings: commonSwiftSettings
+            swiftSettings: commonSwiftSettings,
+            plugins: [
+                .plugin(name: "EntitlementsCodeGenPlugin"),
+            ]
         ),
         // Tests
         .testTarget(
@@ -85,19 +51,24 @@ let package = Package(
             swiftSettings: commonSwiftSettings
         ),
         .testTarget(
-            name: "AppEntitlementsMacrosTests",
+            name: "CodeGeneratorTests",
+            dependencies: ["entitlements-codegen-tool"],
+            path: "Tests/CodeGeneratorTests",
+            swiftSettings: commonSwiftSettings
+        ),
+        // Build Plugin
+        .plugin(
+            name: "EntitlementsCodeGenPlugin",
+            capability: .buildTool(),
+            dependencies: ["entitlements-codegen-tool"]
+        ),
+        // Build Tool (Executable)
+        .executableTarget(
+            name: "entitlements-codegen-tool",
             dependencies: [
-                "AppEntitlementsMacros",
-                .target(
-                    name: "AppEntitlementsMacrosPlugin",
-                    condition: .when(platforms: [.macOS])
-                ),
-                .product(
-                    name: "SwiftSyntaxMacrosTestSupport",
-                    package: "swift-syntax",
-                    condition: .when(platforms: [.macOS])
-                ),
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ],
+            path: "Plugins/EntitlementsCodeGenTool",
             swiftSettings: commonSwiftSettings
         ),
     ],

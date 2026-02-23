@@ -167,6 +167,12 @@ Contributions are welcome! Please feel free to:
 - Improve documentation or add examples
 - Share feedback on API design
 
+## Data Attribution
+
+Entitlement metadata in this package is derived from publicly available [Apple Developer Documentation](https://developer.apple.com/documentation/bundleresources/entitlements). This package is not affiliated with, endorsed by, or sponsored by Apple Inc.
+
+All entitlement keys, type information, and platform availability data are factual technical specifications extracted from Apple's public documentation. Documentation links reference the original Apple Developer Documentation for detailed information.
+
 ## References
 
 - [Apple Developer: Entitlements](https://developer.apple.com/documentation/bundleresources/entitlements)

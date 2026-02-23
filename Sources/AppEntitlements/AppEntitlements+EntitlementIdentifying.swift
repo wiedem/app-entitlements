@@ -1,4 +1,3 @@
-public import AppEntitlementsCore
 
 public extension AppEntitlements {
     /// Retrieves an entitlement value using a type-safe identifier.
