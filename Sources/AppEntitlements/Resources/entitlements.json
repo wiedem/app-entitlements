@@ -3279,6 +3279,10 @@
       "version" : "15.0"
     },
     {
+      "name" : "visionOS",
+      "version" : "1.0"
+    },
+    {
       "name" : "watchOS",
       "version" : "8.0"
     }

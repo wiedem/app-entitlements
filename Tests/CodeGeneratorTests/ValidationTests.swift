@@ -97,6 +97,9 @@ private extension ValidationTests {
             supportedPlatforms: [
                 SupportedPlatform(name: "iOS", version: "15.0"),
                 SupportedPlatform(name: "macOS", version: "12.0"),
+                SupportedPlatform(name: "tvOS", version: "15.0"),
+                SupportedPlatform(name: "visionOS", version: "1.0"),
+                SupportedPlatform(name: "watchOS", version: "8.0"),
             ]
         )
     }

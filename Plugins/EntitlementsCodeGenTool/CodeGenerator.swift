@@ -264,7 +264,11 @@ private extension CodeGenerator {
     // MARK: - Availability Filtering
 
     /// Filters out availability attributes that match or are below the package's minimum deployment versions.
+    /// Also filters out platforms that are not in the package's supportedPlatforms list.
     func filterRedundantAvailability(_ availability: [Availability]) -> [Availability] {
+        // Build a set of supported platform names
+        let supportedPlatformNames = Set(entitlements.supportedPlatforms.map { $0.name.lowercased() })
+        
         // Build a lookup dictionary from supportedPlatforms
         let minimumVersions = Dictionary(
             uniqueKeysWithValues: entitlements.supportedPlatforms.map { ($0.name.lowercased(), $0.version) }
@@ -272,10 +276,16 @@ private extension CodeGenerator {
 
         return availability.filter { av in
             guard av.unavailable != true else { return false }
+            
+            let platformName = av.platform.lowercased()
+            
+            // Filter out platforms that are not in supportedPlatforms
+            guard supportedPlatformNames.contains(platformName) else {
+                return false
+            }
 
-            // Look up minimum version for this platform
-            guard let minimumVersion = minimumVersions[av.platform.lowercased()] else {
-                // Keep availability for platforms not in supportedPlatforms (e.g., future platforms)
+            // Filter out versions that match or are below the package minimum
+            guard let minimumVersion = minimumVersions[platformName] else {
                 return true
             }
 

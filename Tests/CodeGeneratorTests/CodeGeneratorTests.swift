@@ -238,6 +238,67 @@ struct CodeGeneratorTests {
         #expect(output == expected)
     }
 
+    @Test("Filter unsupported platforms from availability attributes")
+    func testFilterUnsupportedPlatforms() {
+        // Test with a hypothetical future platform that's not in supportedPlatforms
+        let entitlementsWithUnsupportedPlatforms = EntitlementsData(
+            version: "1.0",
+            properties: .init(
+                ios: [
+                    EntitlementProperty(
+                        name: "futurePlatformProperty",
+                        entitlementKey: "futurePlatformProperty",
+                        rawKey: "com.apple.future",
+                        type: "String",
+                        possibleValues: nil,
+                        category: "Testing",
+                        documentation: "Property with hypothetical future platform",
+                        appleDocUrl: "https://developer.apple.com/future",
+                        availability: [
+                            Availability(platform: "iOS", introducedAt: "16.0", unavailable: false),
+                            Availability(platform: "xrOS", introducedAt: "1.0", unavailable: false),
+                            Availability(platform: "macOS", introducedAt: "13.0", unavailable: false),
+                        ]
+                    ),
+                ],
+                macOS: [],
+                shared: []
+            ),
+            supportedPlatforms: Self.sampleEntitlements.supportedPlatforms
+        )
+
+        let generator = CodeGenerator(
+            entitlements: entitlementsWithUnsupportedPlatforms,
+            typeMappings: Self.sampleTypeMappings
+        )
+        let output = generator.generatePropertyFile(
+            for: "iOS",
+            properties: entitlementsWithUnsupportedPlatforms.properties.ios
+        )
+
+        // xrOS should be filtered out, only iOS 16.0 and macOS 13.0 remain
+        let expected = """
+            internal import Foundation
+
+            // MARK: - Testing
+
+            @available(iOS 16.0, macOS 13.0, *)
+            public extension AppEntitlements {
+                /// Property with hypothetical future platform
+                ///
+                /// - SeeAlso: [Property with hypothetical future platform](https://developer.apple.com/future)
+                static var futurePlatformProperty: String? {
+                    get throws {
+                        try AppEntitlements.getValue(for: Entitlement.futurePlatformProperty, as: String.self)
+                    }
+                }
+            }
+
+            """
+
+        #expect(output == expected)
+    }
+
     @Test("Filter redundant availability attributes matching package minimum versions")
     func testFilterRedundantAvailability() {
         let entitlementsWithRedundantAvailability = EntitlementsData(
@@ -287,34 +348,34 @@ struct CodeGeneratorTests {
         )
 
         let expected = """
-internal import Foundation
+            internal import Foundation
 
-// MARK: - Testing
+            // MARK: - Testing
 
-public extension AppEntitlements {
-    /// Old property at iOS 15.0 (should be filtered)
-    ///
-    /// - SeeAlso: [Old property at iOS 15.0 (should be filtered)](https://developer.apple.com/old)
-    static var oldProperty: String? {
-        get throws {
-            try AppEntitlements.getValue(for: Entitlement.oldProperty, as: String.self)
-        }
-    }
-}
+            public extension AppEntitlements {
+                /// Old property at iOS 15.0 (should be filtered)
+                ///
+                /// - SeeAlso: [Old property at iOS 15.0 (should be filtered)](https://developer.apple.com/old)
+                static var oldProperty: String? {
+                    get throws {
+                        try AppEntitlements.getValue(for: Entitlement.oldProperty, as: String.self)
+                    }
+                }
+            }
 
-@available(iOS 16.0, *)
-public extension AppEntitlements {
-    /// New property at iOS 16.0 (should be kept)
-    ///
-    /// - SeeAlso: [New property at iOS 16.0 (should be kept)](https://developer.apple.com/new)
-    static var newProperty: String? {
-        get throws {
-            try AppEntitlements.getValue(for: Entitlement.newProperty, as: String.self)
-        }
-    }
-}
+            @available(iOS 16.0, *)
+            public extension AppEntitlements {
+                /// New property at iOS 16.0 (should be kept)
+                ///
+                /// - SeeAlso: [New property at iOS 16.0 (should be kept)](https://developer.apple.com/new)
+                static var newProperty: String? {
+                    get throws {
+                        try AppEntitlements.getValue(for: Entitlement.newProperty, as: String.self)
+                    }
+                }
+            }
 
-"""
+            """
 
         #expect(output == expected)
     }
@@ -374,6 +435,7 @@ private extension CodeGeneratorTests {
             SupportedPlatform(name: "iOS", version: "15.0"),
             SupportedPlatform(name: "macOS", version: "12.0"),
             SupportedPlatform(name: "tvOS", version: "15.0"),
+            SupportedPlatform(name: "visionOS", version: "1.0"),
             SupportedPlatform(name: "watchOS", version: "8.0"),
         ]
     )
