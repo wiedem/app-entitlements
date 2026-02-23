@@ -41,13 +41,13 @@ struct EntitlementsCodeGenTool: ParsableCommand {
         let generator = CodeGenerator(entitlements: entitlements, typeMappings: typeMappings)
 
         // Generate Entitlement.swift
-        let entitlementEnumCode = generator.generateEntitlementEnum()
+        let entitlementEnumCode = generator.generateEntitlementEnumFile()
         let entitlementFile = outputURL.appendingPathComponent("Entitlement.swift")
         try entitlementEnumCode.write(to: entitlementFile, atomically: true, encoding: .utf8)
         print("✅ Generated: Entitlement.swift")
 
         // Generate EntitlementValueTypes.swift
-        let valueTypesCode = generator.generateValueTypes()
+        let valueTypesCode = generator.generateValueTypesFile()
         let valueTypesFile = outputURL.appendingPathComponent("EntitlementValueTypes.swift")
         try valueTypesCode.write(to: valueTypesFile, atomically: true, encoding: .utf8)
         print("✅ Generated: EntitlementValueTypes.swift")

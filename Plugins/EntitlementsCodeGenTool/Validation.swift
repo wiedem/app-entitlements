@@ -6,9 +6,9 @@ enum ValidationError: Error, CustomStringConvertible {
 
     var description: String {
         switch self {
-        case .invalidType(let property, let type, let reason):
+        case let .invalidType(property, type, reason):
             "Invalid type '\(type)' for property '\(property)': \(reason)"
-        case .emptyType(let property):
+        case let .emptyType(property):
             "Empty type for property '\(property)'"
         }
     }
@@ -17,7 +17,7 @@ enum ValidationError: Error, CustomStringConvertible {
 enum EntitlementValidator {
     private static let validScalarTypes: Set<String> = ["Bool", "String", "Int", "PropertyListValue"]
     private static let validDictType = "[String: PropertyListValue]"
-    
+
     static func validate(_ entitlements: EntitlementsData) throws {
         let allProperties = entitlements.properties.ios + entitlements.properties.macOS + entitlements.properties.shared
 
@@ -44,7 +44,7 @@ enum EntitlementValidator {
         }
 
         // Array types: [T] where T is a valid scalar or dictionary type
-        if type.hasPrefix("[") && type.hasSuffix("]") {
+        if type.hasPrefix("["), type.hasSuffix("]") {
             let elementType = String(type.dropFirst().dropLast()).trimmingCharacters(in: .whitespaces)
 
             if validScalarTypes.contains(elementType) || elementType == validDictType {

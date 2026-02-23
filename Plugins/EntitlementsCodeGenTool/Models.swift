@@ -3,12 +3,18 @@
 struct EntitlementsData: Codable {
     let version: String
     let properties: Properties
+    let supportedPlatforms: [SupportedPlatform]
 
     struct Properties: Codable {
         let ios: [EntitlementProperty]
         let macOS: [EntitlementProperty]
         let shared: [EntitlementProperty]
     }
+}
+
+struct SupportedPlatform: Codable {
+    let name: String
+    let version: String
 }
 
 struct EntitlementProperty: Codable, Equatable {
