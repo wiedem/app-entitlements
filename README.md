@@ -41,6 +41,22 @@ Or add it in Xcode:
 1. **File → Add Package Dependencies...**
 2. Enter: `https://github.com/wiedem/app-entitlements.git`
 
+## First Build Setup
+
+When you first build your project with AppEntitlements, Xcode will display a one-time security prompt asking you to trust the build plugin.
+
+**Why is this needed?**
+AppEntitlements provides type-safe properties for 150+ entitlements across all Apple platforms. Instead of manually maintaining this code, a build plugin automatically generates it from Apple's entitlement metadata during the build process, ensuring the API is always up-to-date and accurate. For security, Xcode requires explicit user consent before running any third-party build plugin.
+
+**What to do:**
+1. Click "Trust & Enable" when prompted
+2. The plugin generates type-safe entitlement properties during build
+3. You'll only see this prompt once per development machine
+
+After trusting the plugin once, all future builds will proceed automatically without prompts.
+
+> **Note for Teams:** Each developer needs to trust the plugin once on their machine. For CI/CD environments like Xcode Cloud, see [Xcode's documentation on plugin trust](https://developer.apple.com/documentation/xcode/running-build-tool-plug-ins).
+
 ## Quick Start
 
 ```swift
