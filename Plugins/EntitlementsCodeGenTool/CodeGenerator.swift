@@ -210,25 +210,7 @@ private extension CodeGenerator {
     }
 
     func generateAvailabilityAttributeString(_ availability: [Availability]) -> String {
-        // Filter out redundant availability that matches or is below package minimum versions
-        let filteredAvailability = filterRedundantAvailability(availability)
-
-        let introduced = filteredAvailability.filter { $0.unavailable != true }
-        let unavailable = filteredAvailability.filter { $0.unavailable == true }
-
-        var attrs: [String] = []
-
-        if !introduced.isEmpty {
-            let platforms = introduced.map { platformAvailability($0) }.joined(separator: ", ")
-            attrs.append("@available(\(platforms), *)")
-        }
-
-        for unavail in unavailable {
-            let platformName = mapPlatformName(unavail.platform)
-            attrs.append("@available(\(platformName), unavailable)")
-        }
-
-        return attrs.joined(separator: "\n")
+        generateAvailabilityAttributes(availability).joined(separator: "\n")
     }
 
     func generateAvailabilityAttributes(_ availability: [Availability]) -> [String] {
