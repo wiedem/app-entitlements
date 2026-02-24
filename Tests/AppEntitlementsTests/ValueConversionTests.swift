@@ -156,4 +156,28 @@ struct ValueConversionTests {
             try AppEntitlements.convertValue(value, to: [String].self)
         }
     }
+
+    // MARK: - convertRawValue Tests
+
+    @Test("Convert valid raw value to enum case")
+    func convertRawValueSuccess() throws {
+        let value = PropertyListValue.string("production")
+        let result = try AppEntitlements.convertRawValue(value, to: MockEnvironment.self)
+        #expect(result == .production)
+    }
+
+    @Test("Convert invalid raw value throws", arguments: [
+        PropertyListValue.string("staging"),  // Valid type, unknown enum case
+        PropertyListValue.int32(42),          // Wrong PropertyListValue type
+    ])
+    func convertRawValueThrows(value: PropertyListValue) {
+        #expect(throws: PropertyListValueError.self) {
+            try AppEntitlements.convertRawValue(value, to: MockEnvironment.self)
+        }
+    }
+}
+
+private enum MockEnvironment: String {
+    case development
+    case production
 }

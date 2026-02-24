@@ -445,6 +445,25 @@ struct CodeGeneratorTests {
         """
         #expect(propertyOutput == expectedProperty)
     }
+
+    // MARK: - Version Comparison Tests
+
+    @Test("Version comparison", arguments: [
+        ("15.0", "15.0", false),    // Same version
+        ("16.0", "15.0", true),     // Higher major
+        ("14.5", "15.0", false),    // Lower major
+        ("15.1", "15.0", true),     // Higher minor
+        ("15.0.1", "15.0", true),   // More components, equal prefix
+        ("15.0", "15.0.1", false),  // Fewer components, equal prefix
+    ] as [(String, String, Bool)])
+    func versionComparison(version: String, baseline: String, expected: Bool) {
+        let generator = CodeGenerator(
+            entitlements: Self.sampleEntitlements,
+            typeMappings: Self.sampleTypeMappings,
+            excludedProperties: []
+        )
+        #expect(generator.isVersion(version, greaterThan: baseline) == expected)
+    }
 }
 
 private extension CodeGeneratorTests {

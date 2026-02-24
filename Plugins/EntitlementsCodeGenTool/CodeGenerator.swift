@@ -284,9 +284,14 @@ private extension CodeGenerator {
         }
     }
 
+}
+
+// MARK: - Version Comparison
+
+extension CodeGenerator {
     /// Compares two version strings (e.g., "15.0" vs "14.0").
     /// Returns true if `version` is greater than `baseline`.
-    private func isVersion(_ version: String, greaterThan baseline: String) -> Bool {
+    func isVersion(_ version: String, greaterThan baseline: String) -> Bool {
         let versionComponents = version.split(separator: ".").compactMap { Int($0) }
         let baselineComponents = baseline.split(separator: ".").compactMap { Int($0) }
 
