@@ -2,24 +2,6 @@
   "version": "1.0",
   "enums": [
     {
-      "name": "ApsEnvironment",
-      "propertyName": "apsEnvironment",
-      "rawValueType": "String",
-      "documentation": "The APNs environment.",
-      "cases": [
-        {
-          "name": "development",
-          "rawValue": "development",
-          "documentation": "The APNs development environment."
-        },
-        {
-          "name": "production",
-          "rawValue": "production",
-          "documentation": "The APNs production environment."
-        }
-      ]
-    },
-    {
       "name": "ClassKitEnvironment",
       "propertyName": "classKitEnvironment",
       "rawValueType": "String",
@@ -34,22 +16,6 @@
           "name": "production",
           "rawValue": "production",
           "documentation": "The environment used by customers of your app who have a Managed Apple ID. This enviroment enables teachers and students to share data through iCloud."
-        }
-      ]
-    },
-    {
-      "name": "ICloudContainerEnvironment",
-      "propertyName": "iCloudContainerEnvironment",
-      "rawValueType": "String",
-      "documentation": "The iCloud container environment.",
-      "cases": [
-        {
-          "name": "development",
-          "rawValue": "Development"
-        },
-        {
-          "name": "production",
-          "rawValue": "Production"
         }
       ]
     }

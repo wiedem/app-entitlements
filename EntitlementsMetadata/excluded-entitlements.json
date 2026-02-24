@@ -5,6 +5,14 @@
         "teamIdentifier",
         "keychainAccessGroups",
         "applicationGroups",
-        "getTaskAllow"
+        "getTaskAllow",
+        "apsEnvironment",
+        "associatedDomains",
+        "defaultDataProtection",
+        "deviceCheckAppAttestEnvironment",
+        "iCloudContainerIdentifiers",
+        "iCloudContainerEnvironment",
+        "iCloudKeyValueStore",
+        "iCloudServices"
     ]
 }
