@@ -35,6 +35,8 @@ extension PropertyListValue {
             guard let key = key as? String,
                   let value = Self(value)
             else {
+                // Intentionally continuing for resilience: Individual malformed key-value pairs
+                // should not cause the entire dictionary to fail parsing.
                 continue
             }
             mapped[key] = value
@@ -75,6 +77,8 @@ extension PropertyListValue {
             self = value
 
         case let values as NSArray:
+            // Intentionally using compactMap for resilience: Individual malformed values
+            // should not cause the entire array to fail parsing.
             self = .array(
                 values.compactMap { Self($0) }
             )
