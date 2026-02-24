@@ -114,7 +114,7 @@ let customValue = try AppEntitlements.getValue(
 
 ## Best Practices
 
-1. **Use Built-in Properties First**: Check <doc:CommonEntitlements> to see if a property already exists
+1. **Check Existing Properties First**: See <doc:CommonEntitlements> for the 13 core properties. The optional `AppEntitlementsCatalog` module provides 150+ additional properties — check if a property exists there before writing a manual `getValue` call.
 2. **Create Extensions for Reuse**: Don't call ``AppEntitlements/getValue(for:as:transform:)-5s4fs`` repeatedly - create a property extension
 3. **Document Entitlement Keys**: Include links to Apple documentation when available
 4. **Handle Errors Gracefully**: Always wrap in do-catch blocks

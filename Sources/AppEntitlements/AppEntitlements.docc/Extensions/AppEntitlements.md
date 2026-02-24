@@ -1,6 +1,6 @@
 # ``AppEntitlements``
 
-Type-safe runtime access to app entitlements for iOS and macOS applications.
+Type-safe runtime access to app entitlements for iOS, macOS, tvOS, visionOS, and watchOS applications.
 
 ## Overview
 
@@ -12,14 +12,23 @@ Type-safe runtime access to app entitlements for iOS and macOS applications.
 - Debugging entitlement-related issues
 - Implementing conditional features based on entitlements
 
-### Quick Example
+### Core and Catalog
+
+The core module includes 13 commonly used entitlement properties and the `getValue` / `getArray` APIs for custom lookups.
 
 ```swift
 import AppEntitlements
 
-// Access common entitlements with type-safe properties
 let appID = try AppEntitlements.applicationIdentifier
-let groups = try AppEntitlements.keychainAccessGroups
+let custom: String? = try AppEntitlements.getValue(for: "com.example.custom")
+```
+
+The optional catalog module extends `AppEntitlements` with 150+ additional type-safe properties generated from Apple's entitlement metadata via a build plugin. Since the plugin runs code during compilation, Xcode displays a one-time trust prompt when first building with this module.
+
+```swift
+import AppEntitlementsCatalog
+
+let networkExtension = try AppEntitlements.networkExtension
 ```
 
 ### Key Features
@@ -45,8 +54,9 @@ let groups = try AppEntitlements.keychainAccessGroups
 
 - ``PropertyListValue``
 - ``ApsEnvironment``
-- ``ClassKitEnvironment``
+- ``AppAttestEnvironment``
 - ``ICloudContainerEnvironment``
+- ``ICloudService``
 
 ### Errors
 

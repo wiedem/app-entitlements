@@ -1,4 +1,4 @@
-# ``AppEntitlements/AppEntitlements/getValue(for:as:transform:)-8iqy8``
+# ``AppEntitlements/AppEntitlements/getValue(for:as:transform:)-6af15``
 
 ## Example
 
@@ -21,4 +21,3 @@ do {
     print("Error: \(error)")
 }
 ```
-

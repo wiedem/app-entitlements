@@ -16,6 +16,21 @@ dependencies: [
 ]
 ```
 
+Then add the product(s) to your target:
+
+```swift
+.target(
+    name: "YourApp",
+    dependencies: [
+        // Core — no build plugin, no trust prompt
+        .product(name: "AppEntitlements", package: "app-entitlements"),
+
+        // Optional: Extended entitlements catalog — includes build plugin, one-time trust prompt
+        .product(name: "AppEntitlementsCatalog", package: "app-entitlements"),
+    ]
+)
+```
+
 Or in Xcode:
 1. File → Add Package Dependencies...
 2. Enter: [https://github.com/wiedem/app-entitlements.git](https://github.com/wiedem/app-entitlements.git)
@@ -28,6 +43,7 @@ Or in Xcode:
 - visionOS 1.0+
 - watchOS 8.0+
 - Swift 6.0+
+- Xcode 16.0+
 
 ## Basic Usage
 
@@ -37,15 +53,14 @@ Import the package and access entitlements through static properties.
 import AppEntitlements
 
 do {
-    // Access entitlements
     if let appID = try AppEntitlements.applicationIdentifier {
         print("App ID: \(appID)")
     }
-    
+
     if let keychainGroups = try AppEntitlements.keychainAccessGroups {
         print("Keychain Groups: \(keychainGroups.joined(separator: ", "))")
     }
-    
+
     if let isDebug = try AppEntitlements.getTaskAllow {
         print("Debug mode: \(isDebug)")
     }
@@ -60,12 +75,23 @@ do {
 - Throws errors when entitlements cannot be accessed or parsed
 - All properties are optional (`String?`, `Bool?`, `[String]?`, etc.)
 
+## Extended Entitlements Catalog
+
+The optional `AppEntitlementsCatalog` module provides 150+ type-safe properties generated from Apple's entitlement metadata. It uses a build plugin for code generation, which triggers a one-time trust prompt in Xcode.
+
+```swift
+import AppEntitlementsCatalog
+
+let networkExtension = try AppEntitlements.networkExtension
+```
+
+> Note: Each developer needs to trust the plugin once on their machine. For CI/CD environments, see [Xcode's documentation on plugin trust](https://developer.apple.com/documentation/xcode/running-build-tool-plug-ins).
+
 ## Accessing Custom Entitlements
 
 For entitlements without built-in properties, use ``AppEntitlements/AppEntitlements/getValue(for:as:transform:)-5s4fs``:
 
 ```swift
-// Access a new Apple entitlement
 let newFeature: Bool? = try AppEntitlements.getValue(
     for: "com.apple.developer.new-feature"
 )
@@ -115,13 +141,12 @@ let groups: [String]? = try AppEntitlements.getArray(
 ### RawRepresentable Types
 Any `RawRepresentable` type with `String` as `RawValue` is supported.
 
-Built-in types: ``ApsEnvironment``, ``ClassKitEnvironment``, ``ICloudContainerEnvironment``
+Built-in types: ``ApsEnvironment``, ``AppAttestEnvironment``, ``ICloudContainerEnvironment``, ``ICloudService``
 
 ```swift
 // Examples with built-in types
 let apsEnv = try AppEntitlements.apsEnvironment
-let protection = try AppEntitlements.defaultDataProtection
-let attestEnv = try AppEntitlements.appAttestEnvironment
+let attestEnv = try AppEntitlements.deviceCheckAppAttestEnvironment
 
 // Custom RawRepresentable types
 enum MyEnvironment: String {

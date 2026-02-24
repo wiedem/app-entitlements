@@ -13,16 +13,34 @@ The `AppEntitlements` enum serves as a namespace for accessing app entitlements 
 - ``applicationIdentifier``
 - ``teamIdentifier``
 
-### Development & Distribution
-
-- ``getTaskAllow``
-- ``apsEnvironment``
-
-### Data Protection & Sharing
+### Access Groups & Sharing
 
 - ``keychainAccessGroups``
 - ``applicationGroups``
 - ``associatedDomains``
+
+### Push Notifications
+
+- ``apsEnvironment``
+
+### Data Protection
+
+- ``defaultDataProtection``
+
+### Device Check
+
+- ``deviceCheckAppAttestEnvironment``
+
+### iCloud
+
+- ``iCloudContainerIdentifiers``
+- ``iCloudContainerEnvironment``
+- ``iCloudKeyValueStore``
+- ``iCloudServices``
+
+### Development
+
+- ``getTaskAllow``
 
 ### Reading from Executables
 
