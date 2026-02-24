@@ -21,6 +21,10 @@ let package = Package(
             name: "AppEntitlements",
             targets: ["AppEntitlements"]
         ),
+        .library(
+            name: "AppEntitlementsCatalog",
+            targets: ["AppEntitlementsCatalog"]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-asn1.git", .upToNextMajor(from: "1.5.0")),
@@ -28,7 +32,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
     ],
     targets: [
-        // Main library target
+        // Core library target (no plugin, no trust prompt)
         .target(
             name: "AppEntitlements",
             dependencies: [
@@ -37,9 +41,14 @@ let package = Package(
             path: "Sources/AppEntitlements",
             resources: [
                 .process("Resources/PrivacyInfo.xcprivacy"),
-                .process("Resources/entitlements.json"),
-                .process("Resources/entitlement-type-mappings.json"),
             ],
+            swiftSettings: commonSwiftSettings
+        ),
+        // Catalog target with generated entitlements (requires trust prompt)
+        .target(
+            name: "AppEntitlementsCatalog",
+            dependencies: ["AppEntitlements"],
+            path: "Sources/AppEntitlementsCatalog",
             swiftSettings: commonSwiftSettings,
             plugins: [
                 .plugin(name: "EntitlementsCodeGenPlugin"),

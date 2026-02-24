@@ -8,17 +8,18 @@ internal import PackagePlugin
 @main
 struct EntitlementsCodeGenPlugin: BuildToolPlugin {
     func createBuildCommands(context: PluginContext, target: Target) async throws -> [Command] {
-        // Only run for the AppEntitlements target
-        guard target.name == "AppEntitlements" else {
+        // Only run for the AppEntitlementsCatalog target
+        guard target.name == "AppEntitlementsCatalog" else {
             return []
         }
 
-        // Locate JSON resource files
-        let resourcesPath = context.package.directoryURL
-            .appending(path: "Sources/AppEntitlements/Resources")
+        // Locate JSON metadata files in EntitlementsMetadata/ at package root
+        let metadataPath = context.package.directoryURL
+            .appending(path: "EntitlementsMetadata")
 
-        let entitlementsJSON = resourcesPath.appending(path: "entitlements.json")
-        let typeMappingsJSON = resourcesPath.appending(path: "entitlement-type-mappings.json")
+        let entitlementsJSON = metadataPath.appending(path: "entitlements.json")
+        let typeMappingsJSON = metadataPath.appending(path: "entitlement-type-mappings.json")
+        let excludedEntitlementsJSON = metadataPath.appending(path: "excluded-entitlements.json")
 
         // Output directory for generated code
         let outputDir = context.pluginWorkDirectoryURL.appending(path: "GeneratedSources")
@@ -43,11 +44,13 @@ struct EntitlementsCodeGenPlugin: BuildToolPlugin {
                 arguments: [
                     "--entitlements-json", entitlementsJSON.path(),
                     "--type-mappings-json", typeMappingsJSON.path(),
+                    "--excluded-entitlements-json", excludedEntitlementsJSON.path(),
                     "--output-dir", outputDir.path(),
                 ],
                 inputFiles: [
                     entitlementsJSON,
                     typeMappingsJSON,
+                    excludedEntitlementsJSON,
                 ],
                 outputFiles: outputFiles
             ),

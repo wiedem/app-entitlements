@@ -14,6 +14,9 @@ struct EntitlementsCodeGenTool: ParsableCommand {
     @Option(name: .long, help: "Path to the type mappings JSON file.")
     var typeMappingsJson: String
 
+    @Option(name: .long, help: "Path to the excluded entitlements JSON file.")
+    var excludedEntitlementsJson: String
+
     @Option(name: .long, help: "Output directory for generated Swift files.")
     var outputDir: String
 
@@ -21,10 +24,12 @@ struct EntitlementsCodeGenTool: ParsableCommand {
         // Load JSON files
         let entitlementsData = try Data(contentsOf: URL(fileURLWithPath: entitlementsJson))
         let typeMappingsData = try Data(contentsOf: URL(fileURLWithPath: typeMappingsJson))
+        let excludedEntitlementsData = try Data(contentsOf: URL(fileURLWithPath: excludedEntitlementsJson))
 
         let decoder = JSONDecoder()
         let entitlements = try decoder.decode(EntitlementsData.self, from: entitlementsData)
         let typeMappings = try decoder.decode(TypeMappingsData.self, from: typeMappingsData)
+        let excludedEntitlements = try decoder.decode(ExcludedEntitlementsData.self, from: excludedEntitlementsData)
 
         // Validate all entitlement types
         try EntitlementValidator.validate(entitlements)
@@ -35,10 +40,15 @@ struct EntitlementsCodeGenTool: ParsableCommand {
         print("✅ JSON files loaded successfully")
         print("   - Entitlements: \(entitlements.properties.ios.count + entitlements.properties.macOS.count + entitlements.properties.shared.count) properties")
         print("   - Type Mappings: \(typeMappings.enums.count) enums")
+        print("   - Excluded Properties: \(excludedEntitlements.excludedProperties.count)")
         print("   - Output directory: \(outputDir)")
 
         // Initialize code generator
-        let generator = CodeGenerator(entitlements: entitlements, typeMappings: typeMappings)
+        let generator = CodeGenerator(
+            entitlements: entitlements,
+            typeMappings: typeMappings,
+            excludedProperties: Set(excludedEntitlements.excludedProperties)
+        )
 
         // Generate Entitlement.swift
         let entitlementEnumCode = generator.generateEntitlementEnumFile()

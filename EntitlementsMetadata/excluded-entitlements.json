@@ -1,0 +1,10 @@
+{
+    "version": "1.0",
+    "excludedProperties": [
+        "applicationIdentifier",
+        "teamIdentifier",
+        "keychainAccessGroups",
+        "applicationGroups",
+        "getTaskAllow"
+    ]
+}

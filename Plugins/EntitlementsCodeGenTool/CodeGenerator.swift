@@ -3,6 +3,7 @@ private import Foundation
 struct CodeGenerator {
     let entitlements: EntitlementsData
     let typeMappings: TypeMappingsData
+    let excludedProperties: Set<String>
 
     // MARK: - Entitlement.swift Generation
 
@@ -15,8 +16,9 @@ struct CodeGenerator {
 
         """
 
-        // Collect all properties grouped by category
-        let allProperties = entitlements.properties.ios + entitlements.properties.macOS + entitlements.properties.shared
+        // Collect all properties grouped by category, filtering out excluded properties
+        let allProperties = (entitlements.properties.ios + entitlements.properties.macOS + entitlements.properties.shared)
+            .filter { !excludedProperties.contains($0.name) }
         let grouped = Dictionary(grouping: allProperties) { $0.category ?? "Uncategorized" }
         let sortedCategories = grouped.keys.sorted()
 
@@ -85,19 +87,26 @@ struct CodeGenerator {
     // MARK: - Platform-Specific Property Files Generation
 
     func generatePropertyFile(for platform: String, properties: [EntitlementProperty]) -> String {
+        // Filter out excluded properties
+        let filteredProperties = properties.filter { !excludedProperties.contains($0.name) }
+
         // Check if any property uses Data type (requires public import)
-        let needsPublicImport = properties.contains { property in
+        let needsPublicImport = filteredProperties.contains { property in
             property.type == "Data" || property.type == "[Data]"
         }
-        
-        let importStatement = needsPublicImport ? "public import Foundation\n" : "internal import Foundation\n"
-        var output = importStatement
+
+        // Always use public import AppEntitlements for the Catalog target
+        var output = "public import AppEntitlements\n"
+
+        // Add Foundation import if needed
+        let foundationImport = needsPublicImport ? "public import Foundation\n" : "internal import Foundation\n"
+        output += foundationImport
 
         // Find custom enum type for each property
         let enumMappings = Dictionary(uniqueKeysWithValues: typeMappings.enums.map { ($0.propertyName, $0.name) })
 
-        // Group by category
-        let grouped = Dictionary(grouping: properties) { $0.category ?? "Uncategorized" }
+        // Group by category using filtered properties
+        let grouped = Dictionary(grouping: filteredProperties) { $0.category ?? "Uncategorized" }
         let sortedCategories = grouped.keys.sorted()
 
         for category in sortedCategories {

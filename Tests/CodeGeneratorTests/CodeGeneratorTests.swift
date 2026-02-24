@@ -6,40 +6,41 @@ struct CodeGeneratorTests {
     // MARK: - Entitlement Enum File Generation Tests
 
     @Test("Generate complete Entitlement.swift file")
-    func testGenerateEntitlementEnumFile() {
+    func generateEntitlementEnumFile() {
         let generator = CodeGenerator(
             entitlements: Self.sampleEntitlements,
-            typeMappings: Self.sampleTypeMappings
+            typeMappings: Self.sampleTypeMappings,
+            excludedProperties: []
         )
         let output = generator.generateEntitlementEnumFile()
 
         let expected = """
-            /// All known app entitlement keys.
+        /// All known app entitlement keys.
+        ///
+        /// This enum provides type-safe access to entitlement identifiers used across Apple platforms.
+        public enum Entitlement: String, Sendable {
+            // MARK: - Testing
+
+            /// An array entitlement
             ///
-            /// This enum provides type-safe access to entitlement identifiers used across Apple platforms.
-            public enum Entitlement: String, Sendable {
-                // MARK: - Testing
-            
-                /// An array entitlement
-                ///
-                /// - SeeAlso: [An array entitlement](https://developer.apple.com/array-test)
-                @available(iOS 16.0, *)
-                case arrayEntitlement = "com.apple.array-test"
-            
-                /// A test entitlement
-                ///
-                /// - SeeAlso: [A test entitlement](https://developer.apple.com/test)
-                case testEntitlement = "com.apple.test"
+            /// - SeeAlso: [An array entitlement](https://developer.apple.com/array-test)
+            @available(iOS 16.0, *)
+            case arrayEntitlement = "com.apple.array-test"
 
-                // MARK: - Uncategorized
-            
-                /// Entitlement without category
-                ///
-                /// - SeeAlso: [Entitlement without category](https://developer.apple.com/uncategorized)
-                case uncategorizedEntitlement = "com.apple.uncategorized"
-            }
+            /// A test entitlement
+            ///
+            /// - SeeAlso: [A test entitlement](https://developer.apple.com/test)
+            case testEntitlement = "com.apple.test"
 
-            """
+            // MARK: - Uncategorized
+
+            /// Entitlement without category
+            ///
+            /// - SeeAlso: [Entitlement without category](https://developer.apple.com/uncategorized)
+            case uncategorizedEntitlement = "com.apple.uncategorized"
+        }
+
+        """
 
         #expect(output == expected)
     }
@@ -47,22 +48,23 @@ struct CodeGeneratorTests {
     // MARK: - Value Types File Generation Tests
 
     @Test("Generate complete EntitlementValueTypes.swift file")
-    func testGenerateValueTypesFile() {
+    func generateValueTypesFile() {
         let generator = CodeGenerator(
             entitlements: Self.sampleEntitlements,
-            typeMappings: Self.sampleTypeMappings
+            typeMappings: Self.sampleTypeMappings,
+            excludedProperties: []
         )
         let output = generator.generateValueTypesFile()
 
         let expected = """
-            /// A test enum
-            public enum TestEnum: String, Sendable {
-                /// First case
-                case case1 = "value1"
-                case case2 = "value2"
-            }
+        /// A test enum
+        public enum TestEnum: String, Sendable {
+            /// First case
+            case case1 = "value1"
+            case case2 = "value2"
+        }
 
-            """
+        """
 
         #expect(output == expected)
     }
@@ -70,10 +72,11 @@ struct CodeGeneratorTests {
     // MARK: - Platform-Specific Property File Generation Tests
 
     @Test("Generate complete AppEntitlements+iOS.swift file")
-    func testGeneratePropertyFileForIOS() {
+    func generatePropertyFileForIOS() {
         let generator = CodeGenerator(
             entitlements: Self.sampleEntitlements,
-            typeMappings: Self.sampleTypeMappings
+            typeMappings: Self.sampleTypeMappings,
+            excludedProperties: []
         )
         let output = generator.generatePropertyFile(
             for: "iOS",
@@ -81,53 +84,54 @@ struct CodeGeneratorTests {
         )
 
         let expected = """
-            internal import Foundation
+        public import AppEntitlements
+        internal import Foundation
 
-            // MARK: - Testing
+        // MARK: - Testing
 
-            public extension AppEntitlements {
-                /// A test entitlement
-                ///
-                /// - SeeAlso: [A test entitlement](https://developer.apple.com/test)
-                static var testEntitlement: String? {
-                    get throws {
-                        try AppEntitlements.getValue(for: Entitlement.testEntitlement, as: String.self)
-                    }
+        public extension AppEntitlements {
+            /// A test entitlement
+            ///
+            /// - SeeAlso: [A test entitlement](https://developer.apple.com/test)
+            static var testEntitlement: String? {
+                get throws {
+                    try AppEntitlements.getValue(for: Entitlement.testEntitlement, as: String.self)
                 }
             }
-            
-            @available(iOS 16.0, *)
-            public extension AppEntitlements {
-                /// An array entitlement
-                ///
-                /// - SeeAlso: [An array entitlement](https://developer.apple.com/array-test)
-                static var arrayEntitlement: [String]? {
-                    get throws {
-                        try AppEntitlements.getArray(for: Entitlement.arrayEntitlement, elementType: String.self)
-                    }
+        }
+
+        @available(iOS 16.0, *)
+        public extension AppEntitlements {
+            /// An array entitlement
+            ///
+            /// - SeeAlso: [An array entitlement](https://developer.apple.com/array-test)
+            static var arrayEntitlement: [String]? {
+                get throws {
+                    try AppEntitlements.getArray(for: Entitlement.arrayEntitlement, elementType: String.self)
                 }
             }
+        }
 
-            // MARK: - Uncategorized
+        // MARK: - Uncategorized
 
-            public extension AppEntitlements {
-                /// Entitlement without category
-                ///
-                /// - SeeAlso: [Entitlement without category](https://developer.apple.com/uncategorized)
-                static var uncategorizedEntitlement: Bool? {
-                    get throws {
-                        try AppEntitlements.getValue(for: Entitlement.uncategorizedEntitlement, as: Bool.self)
-                    }
+        public extension AppEntitlements {
+            /// Entitlement without category
+            ///
+            /// - SeeAlso: [Entitlement without category](https://developer.apple.com/uncategorized)
+            static var uncategorizedEntitlement: Bool? {
+                get throws {
+                    try AppEntitlements.getValue(for: Entitlement.uncategorizedEntitlement, as: Bool.self)
                 }
             }
+        }
 
-            """
+        """
 
         #expect(output == expected)
     }
 
     @Test("Generate property file with Data type requiring public import")
-    func testGeneratePropertyFileWithDataType() {
+    func generatePropertyFileWithDataType() {
         let dataEntitlements = EntitlementsData(
             version: "1.0",
             properties: .init(
@@ -154,7 +158,8 @@ struct CodeGeneratorTests {
 
         let generator = CodeGenerator(
             entitlements: dataEntitlements,
-            typeMappings: Self.sampleTypeMappings
+            typeMappings: Self.sampleTypeMappings,
+            excludedProperties: []
         )
         let output = generator.generatePropertyFile(
             for: "iOS",
@@ -162,28 +167,29 @@ struct CodeGeneratorTests {
         )
 
         let expected = """
-            public import Foundation
+        public import AppEntitlements
+        public import Foundation
 
-            // MARK: - Testing
+        // MARK: - Testing
 
-            public extension AppEntitlements {
-                /// Test data property
-                ///
-                /// - SeeAlso: [Test data property](https://developer.apple.com/test-data)
-                static var dataProperty: Data? {
-                    get throws {
-                        try AppEntitlements.getValue(for: Entitlement.dataProperty, as: Data.self)
-                    }
+        public extension AppEntitlements {
+            /// Test data property
+            ///
+            /// - SeeAlso: [Test data property](https://developer.apple.com/test-data)
+            static var dataProperty: Data? {
+                get throws {
+                    try AppEntitlements.getValue(for: Entitlement.dataProperty, as: Data.self)
                 }
             }
+        }
 
-            """
+        """
 
         #expect(output == expected)
     }
 
     @Test("Generate property file with custom enum type mapping")
-    func testGeneratePropertyFileWithEnumTypeMapping() {
+    func generatePropertyFileWithEnumTypeMapping() {
         let customEntitlements = EntitlementsData(
             version: "1.0",
             properties: .init(
@@ -210,7 +216,8 @@ struct CodeGeneratorTests {
 
         let generator = CodeGenerator(
             entitlements: customEntitlements,
-            typeMappings: Self.sampleTypeMappings
+            typeMappings: Self.sampleTypeMappings,
+            excludedProperties: []
         )
         let output = generator.generatePropertyFile(
             for: "iOS",
@@ -218,28 +225,29 @@ struct CodeGeneratorTests {
         )
 
         let expected = """
-            internal import Foundation
+        public import AppEntitlements
+        internal import Foundation
 
-            // MARK: - Testing
+        // MARK: - Testing
 
-            public extension AppEntitlements {
-                /// Test enum property
-                ///
-                /// - SeeAlso: [Test enum property](https://developer.apple.com/test-enum)
-                static var testEnumProperty: TestEnum? {
-                    get throws {
-                        try AppEntitlements.getValue(for: Entitlement.testEnumProperty, as: TestEnum.self)
-                    }
+        public extension AppEntitlements {
+            /// Test enum property
+            ///
+            /// - SeeAlso: [Test enum property](https://developer.apple.com/test-enum)
+            static var testEnumProperty: TestEnum? {
+                get throws {
+                    try AppEntitlements.getValue(for: Entitlement.testEnumProperty, as: TestEnum.self)
                 }
             }
+        }
 
-            """
+        """
 
         #expect(output == expected)
     }
 
     @Test("Filter unsupported platforms from availability attributes")
-    func testFilterUnsupportedPlatforms() {
+    func filterUnsupportedPlatforms() {
         // Test with a hypothetical future platform that's not in supportedPlatforms
         let entitlementsWithUnsupportedPlatforms = EntitlementsData(
             version: "1.0",
@@ -269,7 +277,8 @@ struct CodeGeneratorTests {
 
         let generator = CodeGenerator(
             entitlements: entitlementsWithUnsupportedPlatforms,
-            typeMappings: Self.sampleTypeMappings
+            typeMappings: Self.sampleTypeMappings,
+            excludedProperties: []
         )
         let output = generator.generatePropertyFile(
             for: "iOS",
@@ -278,29 +287,30 @@ struct CodeGeneratorTests {
 
         // xrOS should be filtered out, only iOS 16.0 and macOS 13.0 remain
         let expected = """
-            internal import Foundation
+        public import AppEntitlements
+        internal import Foundation
 
-            // MARK: - Testing
+        // MARK: - Testing
 
-            @available(iOS 16.0, macOS 13.0, *)
-            public extension AppEntitlements {
-                /// Property with hypothetical future platform
-                ///
-                /// - SeeAlso: [Property with hypothetical future platform](https://developer.apple.com/future)
-                static var futurePlatformProperty: String? {
-                    get throws {
-                        try AppEntitlements.getValue(for: Entitlement.futurePlatformProperty, as: String.self)
-                    }
+        @available(iOS 16.0, macOS 13.0, *)
+        public extension AppEntitlements {
+            /// Property with hypothetical future platform
+            ///
+            /// - SeeAlso: [Property with hypothetical future platform](https://developer.apple.com/future)
+            static var futurePlatformProperty: String? {
+                get throws {
+                    try AppEntitlements.getValue(for: Entitlement.futurePlatformProperty, as: String.self)
                 }
             }
+        }
 
-            """
+        """
 
         #expect(output == expected)
     }
 
     @Test("Filter redundant availability attributes matching package minimum versions")
-    func testFilterRedundantAvailability() {
+    func filterRedundantAvailability() {
         let entitlementsWithRedundantAvailability = EntitlementsData(
             version: "1.0",
             properties: .init(
@@ -340,7 +350,8 @@ struct CodeGeneratorTests {
 
         let generator = CodeGenerator(
             entitlements: entitlementsWithRedundantAvailability,
-            typeMappings: Self.sampleTypeMappings
+            typeMappings: Self.sampleTypeMappings,
+            excludedProperties: []
         )
         let output = generator.generatePropertyFile(
             for: "iOS",
@@ -348,36 +359,91 @@ struct CodeGeneratorTests {
         )
 
         let expected = """
-            internal import Foundation
+        public import AppEntitlements
+        internal import Foundation
 
-            // MARK: - Testing
+        // MARK: - Testing
 
-            public extension AppEntitlements {
-                /// Old property at iOS 15.0 (should be filtered)
-                ///
-                /// - SeeAlso: [Old property at iOS 15.0 (should be filtered)](https://developer.apple.com/old)
-                static var oldProperty: String? {
-                    get throws {
-                        try AppEntitlements.getValue(for: Entitlement.oldProperty, as: String.self)
-                    }
+        public extension AppEntitlements {
+            /// Old property at iOS 15.0 (should be filtered)
+            ///
+            /// - SeeAlso: [Old property at iOS 15.0 (should be filtered)](https://developer.apple.com/old)
+            static var oldProperty: String? {
+                get throws {
+                    try AppEntitlements.getValue(for: Entitlement.oldProperty, as: String.self)
                 }
             }
+        }
 
-            @available(iOS 16.0, *)
-            public extension AppEntitlements {
-                /// New property at iOS 16.0 (should be kept)
-                ///
-                /// - SeeAlso: [New property at iOS 16.0 (should be kept)](https://developer.apple.com/new)
-                static var newProperty: String? {
-                    get throws {
-                        try AppEntitlements.getValue(for: Entitlement.newProperty, as: String.self)
-                    }
+        @available(iOS 16.0, *)
+        public extension AppEntitlements {
+            /// New property at iOS 16.0 (should be kept)
+            ///
+            /// - SeeAlso: [New property at iOS 16.0 (should be kept)](https://developer.apple.com/new)
+            static var newProperty: String? {
+                get throws {
+                    try AppEntitlements.getValue(for: Entitlement.newProperty, as: String.self)
                 }
             }
+        }
 
-            """
+        """
 
         #expect(output == expected)
+    }
+
+    @Test("Exclude properties from generation")
+    func excludedProperties() {
+        let generator = CodeGenerator(
+            entitlements: Self.sampleEntitlements,
+            typeMappings: Self.sampleTypeMappings,
+            excludedProperties: ["testEntitlement", "uncategorizedEntitlement"]
+        )
+
+        // Test enum generation excludes specified properties
+        let enumOutput = generator.generateEntitlementEnumFile()
+        let expectedEnum = """
+        /// All known app entitlement keys.
+        ///
+        /// This enum provides type-safe access to entitlement identifiers used across Apple platforms.
+        public enum Entitlement: String, Sendable {
+            // MARK: - Testing
+
+            /// An array entitlement
+            ///
+            /// - SeeAlso: [An array entitlement](https://developer.apple.com/array-test)
+            @available(iOS 16.0, *)
+            case arrayEntitlement = "com.apple.array-test"
+        }
+
+        """
+        #expect(enumOutput == expectedEnum)
+
+        // Test property file generation excludes specified properties
+        let propertyOutput = generator.generatePropertyFile(
+            for: "iOS",
+            properties: Self.sampleEntitlements.properties.ios
+        )
+        let expectedProperty = """
+        public import AppEntitlements
+        internal import Foundation
+
+        // MARK: - Testing
+
+        @available(iOS 16.0, *)
+        public extension AppEntitlements {
+            /// An array entitlement
+            ///
+            /// - SeeAlso: [An array entitlement](https://developer.apple.com/array-test)
+            static var arrayEntitlement: [String]? {
+                get throws {
+                    try AppEntitlements.getArray(for: Entitlement.arrayEntitlement, elementType: String.self)
+                }
+            }
+        }
+
+        """
+        #expect(propertyOutput == expectedProperty)
     }
 }
 

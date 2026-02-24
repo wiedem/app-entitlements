@@ -55,3 +55,10 @@ struct EnumCase: Codable {
     let rawValue: String
     let documentation: String?
 }
+
+// MARK: - Excluded Entitlements JSON Model
+
+struct ExcludedEntitlementsData: Codable {
+    let version: String
+    let excludedProperties: [String]
+}
