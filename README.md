@@ -20,10 +20,11 @@ A Swift package that provides type-safe runtime access to app entitlements for i
 ## Features
 
 - ✅ **Type-Safe API** - Properties instead of string-based lookups
-- ✅ **60+ Built-in Entitlements** - Common entitlements with proper types
 - ✅ **Extensible** - Easy access to custom entitlements via `getValue` and `getArray`
 - ✅ **Swift 6** - Modern Swift with strict concurrency support
 - ✅ **Complete Documentation** - DocC documentation with examples and guides
+- ✅ **13 Core Entitlements** - Common entitlements available without build plugin
+- ✅ **150+ Catalog Entitlements** - Extended Apple entitlements catalog via `AppEntitlementsCatalog`
 
 ## Installation
 
@@ -37,79 +38,59 @@ dependencies: [
 ]
 ```
 
+Then add the product(s) to your target:
+
+```swift
+.target(
+    name: "YourApp",
+    dependencies: [
+        // Core — no build plugin, no trust prompt
+        .product(name: "AppEntitlements", package: "app-entitlements"),
+
+        // Optional: Extended entitlements catalog — includes build plugin, one-time trust prompt
+        .product(name: "AppEntitlementsCatalog", package: "app-entitlements"),
+    ]
+)
+```
+
 Or add it in Xcode:
 1. **File → Add Package Dependencies...**
 2. Enter: `https://github.com/wiedem/app-entitlements.git`
 
-## First Build Setup
+## Core and Catalog
 
-When you first build your project with AppEntitlements, Xcode will display a one-time security prompt asking you to trust the build plugin.
+AppEntitlements provides two modules from a single package:
 
-**Why is this needed?**
-AppEntitlements provides type-safe properties for 150+ entitlements across all Apple platforms. Instead of manually maintaining this code, a build plugin automatically generates it from Apple's entitlement metadata during the build process, ensuring the API is always up-to-date and accurate. For security, Xcode requires explicit user consent before running any third-party build plugin.
+### AppEntitlements (Core)
 
-**What to do:**
-1. Click "Trust & Enable" when prompted
-2. The plugin generates type-safe entitlement properties during build
-3. You'll only see this prompt once per development machine
-
-After trusting the plugin once, all future builds will proceed automatically without prompts.
-
-> **Note for Teams:** Each developer needs to trust the plugin once on their machine. For CI/CD environments like Xcode Cloud, see [Xcode's documentation on plugin trust](https://developer.apple.com/documentation/xcode/running-build-tool-plug-ins).
-
-## Quick Start
+Contains the runtime API for accessing entitlements, including 13 commonly used entitlement properties, `getValue`/`getArray` for custom lookups, and the underlying Mach-O/Security framework implementation. No build plugin required.
 
 ```swift
 import AppEntitlements
 
-do {
-    // Access built-in entitlements with type-safe properties
-    if let appID = try AppEntitlements.applicationIdentifier {
-        print("App ID: \(appID)")
-    }
-    
-    // Push notification environment (.development or .production)
-    if let apsEnv = try AppEntitlements.apsEnvironment {
-        print("Environment: \(apsEnv)")
-    }
-} catch {
-    print("Error: \(error)")
+if let appID = try AppEntitlements.applicationIdentifier {
+    print("App ID: \(appID)")
 }
+
+// Access any entitlement by its key
+let custom: String? = try AppEntitlements.getValue(
+    for: "com.example.custom-entitlement"
+)
 ```
 
-## Built-in Entitlements
+For a complete list of core entitlements and detailed usage, see the [package documentation](https://wiedem.github.io/app-entitlements/documentation/appentitlements/).
 
-The package provides type-safe properties for 60+ common entitlements, including:
+### AppEntitlementsCatalog
 
-- `applicationIdentifier` - Unique app identifier (Team ID + Bundle ID)
-- `teamIdentifier` - Developer team ID
-- `keychainAccessGroups` - Keychain sharing groups
-- `applicationGroups` - App group identifiers
-- `apsEnvironment` - Push notification environment (`.development` or `.production`)
-- `associatedDomains` - Associated domains for universal links
-- `getTaskAllow` - Debugger attachment (development builds)
-
-Additional categories include: iCloud, CloudKit, networking, authentication, StoreKit, education, gaming, and more.
-
-For a complete list with descriptions and examples, see the [package documentation](https://wiedem.github.io/app-entitlements/documentation/appentitlements/).
-
-## Custom Entitlements
-
-For entitlements not provided as built-in properties, use `getValue` or `getArray`:
+Extends `AppEntitlements` with 150+ type-safe properties generated from Apple's entitlement metadata via a build plugin. Since the build plugin runs code during compilation, Xcode displays a one-time security prompt when first building with this module.
 
 ```swift
-// Access any entitlement by its identifier
-let customFeature: Bool? = try AppEntitlements.getValue(
-    for: "com.apple.developer.custom-feature"
-)
+import AppEntitlementsCatalog
 
-// Access array-type entitlements
-let domains: [String]? = try AppEntitlements.getArray(
-    for: "com.apple.developer.associated-domains"
-)
+let networkExtension = try AppEntitlements.networkExtension
 ```
 
-See the [documentation](https://wiedem.github.io/app-entitlements/documentation/appentitlements/) for more advanced usage.
+> **Note:** Each developer needs to trust the plugin once on their machine. For CI/CD environments, see [Xcode's documentation on plugin trust](https://developer.apple.com/documentation/xcode/running-build-tool-plug-ins).
 
 ## Error Handling
 
@@ -117,8 +98,8 @@ All entitlement access can throw errors. Always use `try`:
 
 ```swift
 do {
-    if let appID = try AppEntitlements.applicationIdentifier {
-        print("App ID: \(appID)")
+    if let groups = try AppEntitlements.applicationGroups {
+        print("App Groups: \(groups)")
     }
 } catch {
     // Handle entitlement access errors
