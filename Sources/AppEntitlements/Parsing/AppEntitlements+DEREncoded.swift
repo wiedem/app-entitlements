@@ -54,6 +54,8 @@ private extension AppEntitlements.DEREncoded {
                 var values = [String: PropertyListValue]()
 
                 while let node = nodes.next() {
+                    // Intentionally using try? for resilience: Individual malformed key-value pairs
+                    // should not cause the entire entitlements dictionary to fail parsing.
                     if let tuple = try? KeyValueTuple(derEncoded: node) {
                         values[tuple.key] = tuple.value
                     }

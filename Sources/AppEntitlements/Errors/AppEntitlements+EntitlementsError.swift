@@ -19,5 +19,11 @@ public extension AppEntitlements {
         /// This wraps underlying errors from parsing, decoding, or accessing the Mach-O binary.
         /// Check the associated error for specific failure details.
         case failedToReadEntitlements(any Error)
+
+        /// The entitlements data has an unexpected format.
+        ///
+        /// This occurs when the property list structure does not match the expected format
+        /// (e.g., root element is not a dictionary).
+        case unexpectedFormat(String)
     }
 }

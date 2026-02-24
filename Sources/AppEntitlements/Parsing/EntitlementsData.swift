@@ -24,23 +24,50 @@ extension AppEntitlements {
 
         func decode() throws -> [String: PropertyListValue] {
             var entitlements = [String: PropertyListValue]()
+            var errors: [any Error] = []
 
+            // Try to decode from linkEdit section (property list)
             if let linkEditData {
-                let linkEditEntitlements = try Self.decodePropertyListEntitlements(from: linkEditData)
-                entitlements.merge(linkEditEntitlements) { current, _ in current }
+                do {
+                    let linkEditEntitlements = try Self.decodePropertyListEntitlements(from: linkEditData)
+                    entitlements.merge(linkEditEntitlements) { current, _ in current }
+                } catch {
+                    errors.append(error)
+                }
             }
 
+            // Try to decode from text section (property list)
             if let textSectionData {
-                let textSectionEntitlements = try Self.decodePropertyListEntitlements(from: textSectionData)
-                entitlements.merge(textSectionEntitlements) { current, _ in current }
+                do {
+                    let textSectionEntitlements = try Self.decodePropertyListEntitlements(from: textSectionData)
+                    entitlements.merge(textSectionEntitlements) { current, _ in current }
+                } catch {
+                    errors.append(error)
+                }
             }
 
+            // Try to decode from linkEdit section (DER encoded)
             if let linkEditDataDER {
-                let linkEditEntitlementsDER = try Self.decodeEntitlementsDER(from: linkEditDataDER)
-                entitlements.merge(linkEditEntitlementsDER) { _, new in new }
+                do {
+                    let linkEditEntitlementsDER = try Self.decodeEntitlementsDER(from: linkEditDataDER)
+                    entitlements.merge(linkEditEntitlementsDER) { _, new in new }
+                } catch {
+                    errors.append(error)
+                }
             }
 
-            return entitlements
+            // If we got entitlements from at least one source, return them
+            if !entitlements.isEmpty {
+                return entitlements
+            }
+
+            // If we had errors but no successful decoding, throw the first error
+            if let firstError = errors.first {
+                throw firstError
+            }
+
+            // No data sources available and no errors - binary has no entitlements
+            return [:]
         }
     }
 }
@@ -53,7 +80,9 @@ extension AppEntitlements.EntitlementsData {
         )
 
         guard case let .dictionary(dictionary) = PropertyListValue(propertyList) else {
-            return [:]
+            throw AppEntitlements.EntitlementsError.unexpectedFormat(
+                "Expected entitlements property list to contain a dictionary at root"
+            )
         }
         return dictionary
     }

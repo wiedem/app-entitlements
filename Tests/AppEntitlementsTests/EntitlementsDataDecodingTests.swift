@@ -157,4 +157,128 @@ struct EntitlementsDataDecodingTests {
 
         #expect(decoded.isEmpty)
     }
+
+    @Test("Test invalid PropertyList format throws unexpectedFormat error")
+    func testInvalidPropertyListFormatThrowsError() throws {
+        // PropertyList with array at root instead of dictionary
+        let invalidPlistData = """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <array>
+            <string>not-a-dictionary</string>
+        </array>
+        </plist>
+        """.data(using: .utf8)!
+
+        let entitlementsData = AppEntitlements.EntitlementsData(
+            linkEditData: invalidPlistData,
+            linkEditDataDER: nil,
+            textSectionData: nil
+        )
+
+        #expect(throws: AppEntitlements.EntitlementsError.self) {
+            _ = try entitlementsData.decode()
+        }
+    }
+
+    @Test("Test partial success with one valid and one invalid source")
+    func testPartialSuccessReturnsValidData() throws {
+        // Valid PropertyList
+        let validPlistData = """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <dict>
+            <key>valid-key</key>
+            <string>VALID</string>
+        </dict>
+        </plist>
+        """.data(using: .utf8)!
+
+        // Invalid PropertyList (array instead of dict)
+        let invalidPlistData = """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <array>
+            <string>invalid</string>
+        </array>
+        </plist>
+        """.data(using: .utf8)!
+
+        let entitlementsData = AppEntitlements.EntitlementsData(
+            linkEditData: validPlistData,
+            linkEditDataDER: nil,
+            textSectionData: invalidPlistData
+        )
+
+        // Should succeed with valid data despite one source failing
+        let decoded = try entitlementsData.decode()
+
+        #expect(decoded["valid-key"]?.stringValue == "VALID")
+    }
+
+    @Test("Test all sources fail throws first error")
+    func testAllSourcesFailThrowsFirstError() throws {
+        // Invalid PropertyList 1
+        let invalidPlist1 = """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <array>
+            <string>invalid1</string>
+        </array>
+        </plist>
+        """.data(using: .utf8)!
+
+        // Invalid PropertyList 2
+        let invalidPlist2 = """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <string>also-invalid</string>
+        </plist>
+        """.data(using: .utf8)!
+
+        let entitlementsData = AppEntitlements.EntitlementsData(
+            linkEditData: invalidPlist1,
+            linkEditDataDER: nil,
+            textSectionData: invalidPlist2
+        )
+
+        // Should throw the first error encountered
+        #expect(throws: AppEntitlements.EntitlementsError.self) {
+            _ = try entitlementsData.decode()
+        }
+    }
+
+    @Test("Test DER decode error is caught and other sources still processed")
+    func testDERErrorDoesNotPreventOtherSources() throws {
+        // Valid PropertyList
+        let validPlistData = """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <dict>
+            <key>plist-key</key>
+            <string>FROM_PLIST</string>
+        </dict>
+        </plist>
+        """.data(using: .utf8)!
+
+        // Invalid DER data (just random bytes)
+        let invalidDERData = Data([0xFF, 0xFE, 0xFD, 0xFC])
+
+        let entitlementsData = AppEntitlements.EntitlementsData(
+            linkEditData: validPlistData,
+            linkEditDataDER: invalidDERData,
+            textSectionData: nil
+        )
+
+        // Should succeed with PropertyList data despite DER failing
+        let decoded = try entitlementsData.decode()
+
+        #expect(decoded["plist-key"]?.stringValue == "FROM_PLIST")
+    }
 }
