@@ -4,7 +4,6 @@ import PackageDescription
 let commonSwiftSettings: [SwiftSetting] = [
     .enableUpcomingFeature("ExistentialAny"),
     .enableUpcomingFeature("InternalImportsByDefault"),
-    .enableUpcomingFeature("StrictConcurrency"),
 ]
 
 let package = Package(
