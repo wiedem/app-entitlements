@@ -34,12 +34,52 @@ do {
 
 ## Supported Types
 
-The ``AppEntitlements/getValue(for:as:transform:)-5s4fs`` method automatically converts these Swift types:
+### Basic Types
+The ``AppEntitlements/getValue(for:as:transform:)-5s4fs`` method supports common Swift types:
+```swift
+let stringValue: String? = try AppEntitlements.getValue(for: "key")
+let boolValue: Bool? = try AppEntitlements.getValue(for: "key")
+let intValue: Int32? = try AppEntitlements.getValue(for: "key")
+```
 
-- `String`, `Bool`, `Int32`, `Int64`, `Float`, `Double`
-- `[String]` - String arrays (use `getArray(for:elementType:transform:)` for typed arrays)
-- `Data`, `Date`
-- ``PropertyListValue`` - Use for complex structures like arrays and dictionaries
+Supported: `String`, `Bool`, `Int32`, `Int64`, `Float`, `Double`, `Data`, `Date`
+
+### Arrays
+Use ``AppEntitlements/AppEntitlements/getArray(for:elementType:transform:)-(String,_,_)`` for typed arrays:
+```swift
+let groups: [String]? = try AppEntitlements.getArray(
+    for: "keychain-access-groups",
+    elementType: String.self
+)
+```
+
+### RawRepresentable Types
+Any `RawRepresentable` type with `String` as `RawValue` is supported.
+
+Built-in types: ``ApsEnvironment``, ``AppAttestEnvironment``, ``ICloudContainerEnvironment``, ``ICloudService``
+
+```swift
+// Examples with built-in types
+let apsEnv = try AppEntitlements.apsEnvironment
+let attestEnv = try AppEntitlements.deviceCheckAppAttestEnvironment
+
+// Custom RawRepresentable types
+enum MyEnvironment: String {
+    case dev, prod
+}
+
+let env: MyEnvironment? = try AppEntitlements.getValue(
+    for: "com.example.environment",
+    as: MyEnvironment.self
+)
+```
+
+### Complex Structures
+Use ``PropertyListValue`` for nested data structures:
+```swift
+let array: [PropertyListValue]? = try AppEntitlements.getValue(for: "key")
+let dict: [String: PropertyListValue]? = try AppEntitlements.getValue(for: "key")
+```
 
 ## Creating Convenience Extensions
 
@@ -61,63 +101,12 @@ if try AppEntitlements.newFeatureEnabled == true {
 }
 ```
 
-## RawRepresentable Types
-
-Any `RawRepresentable` type with `String` as `RawValue` is automatically supported:
-
-```swift
-enum CustomEnvironment: String {
-    case development
-    case production
-}
-
-extension AppEntitlements {
-    static var customEnvironment: CustomEnvironment? {
-        get throws {
-            try getValue(for: "com.example.environment", as: CustomEnvironment.self)
-        }
-    }
-}
-```
-
-The conversion happens automatically - no transform parameter needed.
-
-## Working with Complex Structures
-
-For nested dictionary or array values, use ``PropertyListValue``:
-
-```swift
-// Access a dictionary entitlement
-let config = try AppEntitlements.getValue(
-    for: "com.example.configuration",
-    as: [String: PropertyListValue].self
-)
-
-if let dict = config,
-   let nested = dict["key"]?.stringValue {
-    print("Nested value: \(nested)")
-}
-```
-
-## App-Specific Entitlements
-
-In rare cases, developers may embed custom entitlements in their apps during the signing process. These can be accessed the same way:
-
-```swift
-let customValue = try AppEntitlements.getValue(
-    for: "com.mycompany.custom-setting",
-    as: String.self
-)
-```
-
-**Note**: Custom app entitlements are uncommon and require special build configurations.
-
 ## Best Practices
 
 1. **Check Existing Properties First**: See <doc:CommonEntitlements> for the 13 core properties. The optional `AppEntitlementsCatalog` module provides 150+ additional properties — check if a property exists there before writing a manual `getValue` call.
 2. **Create Extensions for Reuse**: Don't call ``AppEntitlements/getValue(for:as:transform:)-5s4fs`` repeatedly - create a property extension
 3. **Document Entitlement Keys**: Include links to Apple documentation when available
-4. **Handle Errors Gracefully**: Always wrap in do-catch blocks
+4. **Handle Errors**: Every entitlement access can throw errors (e.g. when the code signature cannot be read). Make sure your code handles these cases.
 
 ## Additional Resources
 

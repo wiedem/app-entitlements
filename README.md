@@ -26,37 +26,6 @@ A Swift package that provides type-safe runtime access to app entitlements for i
 - ✅ **13 Core Entitlements** - Common entitlements available without build plugin
 - ✅ **150+ Catalog Entitlements** - Extended Apple entitlements catalog via `AppEntitlementsCatalog`
 
-## Installation
-
-### Swift Package Manager
-
-Add the dependency to your `Package.swift`:
-
-```swift
-dependencies: [
-    .package(url: "https://github.com/wiedem/app-entitlements.git", from: "2.0.0")
-]
-```
-
-Then add the product(s) to your target:
-
-```swift
-.target(
-    name: "YourApp",
-    dependencies: [
-        // Core — no build plugin, no trust prompt
-        .product(name: "AppEntitlements", package: "app-entitlements"),
-
-        // Optional: Extended entitlements catalog — includes build plugin, one-time trust prompt
-        .product(name: "AppEntitlementsCatalog", package: "app-entitlements"),
-    ]
-)
-```
-
-Or add it in Xcode:
-1. **File → Add Package Dependencies...**
-2. Enter: `https://github.com/wiedem/app-entitlements.git`
-
 ## Core and Catalog
 
 AppEntitlements provides two modules from a single package:
@@ -68,9 +37,8 @@ Contains the runtime API for accessing entitlements, including 13 commonly used 
 ```swift
 import AppEntitlements
 
-if let appID = try AppEntitlements.applicationIdentifier {
-    print("App ID: \(appID)")
-}
+let appID = try AppEntitlements.applicationIdentifier
+let apsEnvironment = try AppEntitlements.apsEnvironment
 
 // Access any entitlement by its key
 let custom: String? = try AppEntitlements.getValue(
@@ -110,6 +78,37 @@ do {
 Common errors:
 - **macOS**: `EntitlementsError.failedToCreateSecurityTask` - Invalid code signature or security context
 - **iOS/tvOS/visionOS/watchOS**: `EntitlementsError.failedToLoadLibrary` or `EntitlementsError.failedToLoadExecutableSymbol` - Mach-O parsing issues
+
+## Installation
+
+### Swift Package Manager
+
+Add the dependency to your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/wiedem/app-entitlements.git", from: "2.0.0")
+]
+```
+
+Then add the product(s) to your target:
+
+```swift
+.target(
+    name: "YourApp",
+    dependencies: [
+        // Core — no build plugin, no trust prompt
+        .product(name: "AppEntitlements", package: "app-entitlements"),
+
+        // Optional: Extended entitlements catalog — includes build plugin, one-time trust prompt
+        .product(name: "AppEntitlementsCatalog", package: "app-entitlements"),
+    ]
+)
+```
+
+Or add it in Xcode:
+1. **File → Add Package Dependencies...**
+2. Enter: `https://github.com/wiedem/app-entitlements.git`
 
 ## Requirements
 

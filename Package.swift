@@ -30,7 +30,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.5.0"),
     ],
     targets: [
-        // Core library target (no plugin, no trust prompt)
+        // Core library target
         .target(
             name: "AppEntitlements",
             dependencies: [
@@ -52,7 +52,6 @@ let package = Package(
                 .plugin(name: "EntitlementsCodeGenPlugin"),
             ]
         ),
-        // Tests
         .testTarget(
             name: "AppEntitlementsTests",
             dependencies: ["AppEntitlements"],
