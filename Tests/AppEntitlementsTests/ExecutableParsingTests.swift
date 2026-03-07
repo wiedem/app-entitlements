@@ -77,6 +77,43 @@ struct ExecutableParsingTests {
         }
     }
 
+    @Test("datasize constrains effective container size for SuperBlob")
+    func datasizeConstrainsContainerSize() throws {
+        // Build a valid SuperBlob
+        let superBlobData = CodeSigningBlobTests.createSuperBlobData()
+
+        let cmdsize = UInt32(MemoryLayout<linkedit_data_command>.size)
+        let headerSize = MemoryLayout<mach_header_64>.size
+        let codeSignatureOffset = UInt32(headerSize) + cmdsize
+
+        // datasize is intentionally smaller than the actual SuperBlob data,
+        // so the SuperBlob should fail validation even though the buffer has room.
+        let restrictedDatasize = UInt32(4)
+
+        var data = MachOTestData.dataFrom(
+            MachOTestData.makeMachHeader64(ncmds: 1, sizeofcmds: cmdsize)
+        )
+        data.append(MachOTestData.dataFrom(
+            MachOTestData.makeLinkeditDataCommand(
+                dataoff: codeSignatureOffset,
+                datasize: restrictedDatasize
+            )
+        ))
+        data.append(superBlobData)
+
+        try data.withUnsafeBytes { buffer in
+            let baseAddress = try #require(buffer.baseAddress)
+            let entitlementsData = try AppEntitlements.EntitlementsData.make(
+                fromMachOFileData: baseAddress,
+                bufferSize: buffer.count
+            )
+            // The SuperBlob is valid in the buffer, but datasize=4 restricts
+            // the container so no entitlements should be found.
+            let result = try entitlementsData.decode()
+            #expect(result.isEmpty)
+        }
+    }
+
     // MARK: - entitlements(fromExecutableAt:) public API
 
     @Test("Non-existent file throws error")

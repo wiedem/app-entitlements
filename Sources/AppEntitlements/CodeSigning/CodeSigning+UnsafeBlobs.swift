@@ -8,12 +8,12 @@ extension CodeSigning {
         let magic: Magic
 
         var blobData: Data {
-            guard header.pointee.blobLength > 0 else {
-                return Data()
-            }
-
             let dataPointer = UnsafeRawPointer(header.advanced(by: 1))
             let dataLength = Int(header.pointee.blobLength) - baseAddress.distance(to: dataPointer)
+
+            guard dataLength > 0 else {
+                return Data()
+            }
 
             return Data(
                 bytesNoCopy: UnsafeMutableRawPointer(mutating: dataPointer),
@@ -42,7 +42,8 @@ extension CodeSigning {
                 return nil
             }
 
-            guard Int(header.pointee.blobLength) <= containerSize else { return nil }
+            let blobLength = Int(header.pointee.blobLength)
+            guard blobLength >= MemoryLayout<Header>.size, blobLength <= containerSize else { return nil }
 
             self.magic = magic
         }
@@ -105,10 +106,14 @@ extension CodeSigning {
             }
             self.magic = magic
 
+            // Use the tighter of containerSize and the declared totalLength
+            let totalLength = Int(header.pointee.totalLength)
+            let effectiveSize = min(containerSize, totalLength)
+
             let indicesCount = Int(header.pointee.indicesCount)
             let indicesOffset = MemoryLayout<Header>.size
             let indicesSize = indicesCount * MemoryLayout<BlobIndex>.size
-            guard indicesOffset + indicesSize <= containerSize else { return nil }
+            guard indicesOffset + indicesSize <= effectiveSize else { return nil }
 
             let indicesPointer = UnsafeRawPointer(header.advanced(by: 1))
                 .assumingMemoryBound(to: BlobIndex.self)
@@ -120,8 +125,8 @@ extension CodeSigning {
 
             blobs = codeSigningIndices.compactMap { index in
                 let offset = Int(index.offset)
-                guard offset >= 0, offset < containerSize else { return nil }
-                return UnsafeBlob(baseAddress: baseAddress + offset, containerSize: containerSize - offset)
+                guard offset >= 0, offset < effectiveSize else { return nil }
+                return UnsafeBlob(baseAddress: baseAddress + offset, containerSize: effectiveSize - offset)
             }
         }
     }

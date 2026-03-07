@@ -84,6 +84,37 @@ struct CodeSigningBlobTests {
         }
     }
 
+    @Test("Blob with blobLength of zero returns empty data")
+    func blobLengthZero() throws {
+        var blobData = Data(count: 8)
+        blobData.withUnsafeMutableBytes { buffer in
+            buffer.storeBytes(of: UInt32(0xFADE_7171).bigEndian, toByteOffset: 0, as: UInt32.self)
+            buffer.storeBytes(of: UInt32(0).bigEndian, toByteOffset: 4, as: UInt32.self) // blobLength = 0
+        }
+
+        try blobData.withUnsafeBytes { buffer in
+            let baseAddress = try #require(buffer.baseAddress)
+            let blob = CodeSigning.UnsafeBlob(baseAddress: baseAddress, containerSize: buffer.count)
+            #expect(blob == nil)
+        }
+    }
+
+    @Test("Blob with blobLength smaller than header size returns nil")
+    func blobLengthSmallerThanHeader() throws {
+        // Create a blob where blobLength is 4 (less than header size of 8)
+        var blobData = Data(count: 8)
+        blobData.withUnsafeMutableBytes { buffer in
+            buffer.storeBytes(of: UInt32(0xFADE_7171).bigEndian, toByteOffset: 0, as: UInt32.self)
+            buffer.storeBytes(of: UInt32(4).bigEndian, toByteOffset: 4, as: UInt32.self) // blobLength = 4
+        }
+
+        try blobData.withUnsafeBytes { buffer in
+            let baseAddress = try #require(buffer.baseAddress)
+            let blob = CodeSigning.UnsafeBlob(baseAddress: baseAddress, containerSize: buffer.count)
+            #expect(blob == nil)
+        }
+    }
+
     @Test("Blob with blobLength exceeding containerSize returns nil")
     func blobLengthExceedsContainer() throws {
         let testData = "test-entitlement-data".data(using: .utf8)!
@@ -197,7 +228,7 @@ struct CodeSigningBlobTests {
 
 // MARK: - Test Data Helpers
 
-private extension CodeSigningBlobTests {
+extension CodeSigningBlobTests {
     // Creates a valid SuperBlob structure with entitlement blobs
     static func createSuperBlobData() -> Data {
         var data = Data()

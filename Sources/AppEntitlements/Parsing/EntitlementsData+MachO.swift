@@ -99,28 +99,27 @@ extension AppEntitlements.EntitlementsData {
     static func make(fromMachOFileData baseAddress: UnsafeRawPointer, bufferSize: Int) throws -> Self {
         let machHeader = try MachO.UnsafeMachHeader(baseAddress: baseAddress, bufferSize: bufferSize)
 
-        var commandDataOffset: Int?
-
         for command in machHeader.loadCommands {
             switch command.pointee.cmd {
             case UInt32(LC_CODE_SIGNATURE):
                 let linkEditData = UnsafeRawPointer(command).assumingMemoryBound(to: linkedit_data_command.self)
-                commandDataOffset = Int(linkEditData.pointee.dataoff)
-            default:
-                continue
-            }
+                let codeSignatureOffset = Int(linkEditData.pointee.dataoff)
+                let codeSignatureDeclaredSize = Int(linkEditData.pointee.datasize)
 
-            if let commandDataOffset {
-                guard commandDataOffset >= 0, commandDataOffset < bufferSize else {
+                guard codeSignatureOffset >= 0, codeSignatureOffset < bufferSize else {
                     throw MachO.DataError.truncatedData
                 }
 
-                let codeSigningDataPointer = baseAddress + commandDataOffset
-                let remainingSize = bufferSize - commandDataOffset
+                let codeSignatureSize = min(bufferSize - codeSignatureOffset, codeSignatureDeclaredSize)
+                guard codeSignatureSize > 0 else {
+                    throw MachO.DataError.truncatedData
+                }
+
+                let codeSigningDataPointer = baseAddress + codeSignatureOffset
                 var entitlementsData: Data?
                 var entitlementsDataDER: Data?
 
-                if let superBlob = CodeSigning.UnsafeSuperBlob(baseAddress: codeSigningDataPointer, containerSize: remainingSize) {
+                if let superBlob = CodeSigning.UnsafeSuperBlob(baseAddress: codeSigningDataPointer, containerSize: codeSignatureSize) {
                     (entitlementsData, entitlementsDataDER) = extractEntitlementsBlobs(from: superBlob)
                 }
 
@@ -129,6 +128,8 @@ extension AppEntitlements.EntitlementsData {
                     linkEditDataDER: entitlementsDataDER,
                     textSectionData: nil
                 )
+            default:
+                continue
             }
         }
 
