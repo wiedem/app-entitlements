@@ -96,8 +96,8 @@ private extension AppEntitlements.EntitlementsData {
 }
 
 extension AppEntitlements.EntitlementsData {
-    static func make(fromMachOFileData baseAddress: UnsafeRawPointer) throws -> Self {
-        let machHeader = try MachO.UnsafeMachHeader(baseAddress: baseAddress)
+    static func make(fromMachOFileData baseAddress: UnsafeRawPointer, bufferSize: Int) throws -> Self {
+        let machHeader = try MachO.UnsafeMachHeader(baseAddress: baseAddress, bufferSize: bufferSize)
 
         var commandDataOffset: Int?
 
@@ -111,11 +111,16 @@ extension AppEntitlements.EntitlementsData {
             }
 
             if let commandDataOffset {
+                guard commandDataOffset >= 0, commandDataOffset < bufferSize else {
+                    throw MachO.DataError.truncatedData
+                }
+
                 let codeSigningDataPointer = baseAddress + commandDataOffset
+                let remainingSize = bufferSize - commandDataOffset
                 var entitlementsData: Data?
                 var entitlementsDataDER: Data?
 
-                if let superBlob = CodeSigning.UnsafeSuperBlob(baseAddress: codeSigningDataPointer) {
+                if let superBlob = CodeSigning.UnsafeSuperBlob(baseAddress: codeSigningDataPointer, containerSize: remainingSize) {
                     (entitlementsData, entitlementsDataDER) = extractEntitlementsBlobs(from: superBlob)
                 }
 

@@ -167,8 +167,8 @@ struct ValueConversionTests {
     }
 
     @Test("Convert invalid raw value throws", arguments: [
-        PropertyListValue.string("staging"),  // Valid type, unknown enum case
-        PropertyListValue.int32(42),          // Wrong PropertyListValue type
+        PropertyListValue.string("staging"), // Valid type, unknown enum case
+        PropertyListValue.int32(42), // Wrong PropertyListValue type
     ])
     func convertRawValueThrows(value: PropertyListValue) {
         #expect(throws: PropertyListValueError.self) {

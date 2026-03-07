@@ -65,6 +65,11 @@ extension MachO.UnsafeLoadCommands {
         mutating func next() -> UnsafePointer<load_command>? {
             guard index < count else { return nil }
 
+            // Pre-read check: enough room to safely read a load_command header?
+            guard offset + MemoryLayout<load_command>.size <= Int(totalSize) else {
+                return nil
+            }
+
             let commandPointer = (commands + offset).assumingMemoryBound(to: load_command.self)
             let cmdsize = commandPointer.pointee.cmdsize
 

@@ -31,6 +31,21 @@ extension CodeSigning {
             }
             self.magic = magic
         }
+
+        init?(baseAddress: UnsafeRawPointer, containerSize: Int) {
+            guard containerSize >= MemoryLayout<Header>.size else { return nil }
+
+            self.baseAddress = baseAddress
+            header = baseAddress.assumingMemoryBound(to: Header.self)
+
+            guard let magic = Magic(rawValue: header.pointee.magic) else {
+                return nil
+            }
+
+            guard Int(header.pointee.blobLength) <= containerSize else { return nil }
+
+            self.magic = magic
+        }
     }
 }
 
@@ -76,6 +91,37 @@ extension CodeSigning {
 
             blobs = codeSigningIndices.compactMap { index in
                 UnsafeBlob(baseAddress: baseAddress + Int(index.offset))
+            }
+        }
+
+        init?(baseAddress: UnsafeRawPointer, containerSize: Int) {
+            guard containerSize >= MemoryLayout<Header>.size else { return nil }
+
+            self.baseAddress = baseAddress
+            header = baseAddress.assumingMemoryBound(to: Header.self)
+
+            guard let magic = Magic(rawValue: header.pointee.magic) else {
+                return nil
+            }
+            self.magic = magic
+
+            let indicesCount = Int(header.pointee.indicesCount)
+            let indicesOffset = MemoryLayout<Header>.size
+            let indicesSize = indicesCount * MemoryLayout<BlobIndex>.size
+            guard indicesOffset + indicesSize <= containerSize else { return nil }
+
+            let indicesPointer = UnsafeRawPointer(header.advanced(by: 1))
+                .assumingMemoryBound(to: BlobIndex.self)
+
+            let codeSigningIndices = UnsafeBufferPointer(
+                start: indicesPointer,
+                count: indicesCount
+            )
+
+            blobs = codeSigningIndices.compactMap { index in
+                let offset = Int(index.offset)
+                guard offset >= 0, offset < containerSize else { return nil }
+                return UnsafeBlob(baseAddress: baseAddress + offset, containerSize: containerSize - offset)
             }
         }
     }

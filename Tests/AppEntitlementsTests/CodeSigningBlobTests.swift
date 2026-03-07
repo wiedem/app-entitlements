@@ -4,7 +4,7 @@ internal import Testing
 
 struct CodeSigningBlobTests {
     @Test("Test SuperBlob with valid entitlement blobs")
-    func testSuperBlobWithEntitlementBlobs() throws {
+    func superBlobWithEntitlementBlobs() throws {
         // Create a valid SuperBlob structure in memory
         let blobData = Self.createSuperBlobData()
 
@@ -26,7 +26,7 @@ struct CodeSigningBlobTests {
     }
 
     @Test("Test SuperBlob rejects invalid magic number")
-    func testSuperBlobRejectsInvalidMagic() throws {
+    func superBlobRejectsInvalidMagic() throws {
         var invalidData = Data(count: 12)
         invalidData.withUnsafeMutableBytes { buffer in
             buffer.storeBytes(of: UInt32(0xDEAD_BEEF).bigEndian, as: UInt32.self)
@@ -41,7 +41,7 @@ struct CodeSigningBlobTests {
     }
 
     @Test("Test Blob with valid magic and data")
-    func testBlobWithValidMagicAndData() throws {
+    func blobWithValidMagicAndData() throws {
         let testData = "test-entitlement-data".data(using: .utf8)!
         let blobData = Self.createBlobData(magic: 0xFADE_7171, data: testData)
 
@@ -55,7 +55,7 @@ struct CodeSigningBlobTests {
     }
 
     @Test("Test Blob rejects invalid magic number")
-    func testBlobRejectsInvalidMagic() throws {
+    func blobRejectsInvalidMagic() throws {
         var invalidData = Data(count: 8)
         invalidData.withUnsafeMutableBytes { buffer in
             buffer.storeBytes(of: UInt32(0xBADB_AD00).bigEndian, as: UInt32.self)
@@ -69,8 +69,112 @@ struct CodeSigningBlobTests {
         }
     }
 
+    // MARK: - UnsafeBlob with containerSize
+
+    @Test("Blob with containerSize smaller than header returns nil")
+    func blobContainerTooSmallForHeader() throws {
+        let testData = "test".data(using: .utf8)!
+        let blobData = Self.createBlobData(magic: 0xFADE_7171, data: testData)
+
+        try blobData.withUnsafeBytes { buffer in
+            let baseAddress = try #require(buffer.baseAddress)
+            // containerSize of 4 is less than Blob Header (8 bytes)
+            let blob = CodeSigning.UnsafeBlob(baseAddress: baseAddress, containerSize: 4)
+            #expect(blob == nil)
+        }
+    }
+
+    @Test("Blob with blobLength exceeding containerSize returns nil")
+    func blobLengthExceedsContainer() throws {
+        let testData = "test-entitlement-data".data(using: .utf8)!
+        let blobData = Self.createBlobData(magic: 0xFADE_7171, data: testData)
+
+        try blobData.withUnsafeBytes { buffer in
+            let baseAddress = try #require(buffer.baseAddress)
+            // containerSize is 10, but blobLength is 8 + 21 = 29
+            let blob = CodeSigning.UnsafeBlob(baseAddress: baseAddress, containerSize: 10)
+            #expect(blob == nil)
+        }
+    }
+
+    @Test("Blob with valid containerSize succeeds")
+    func blobValidContainerSize() throws {
+        let testData = "test".data(using: .utf8)!
+        let blobData = Self.createBlobData(magic: 0xFADE_7171, data: testData)
+
+        try blobData.withUnsafeBytes { buffer in
+            let baseAddress = try #require(buffer.baseAddress)
+            let blob = try #require(
+                CodeSigning.UnsafeBlob(baseAddress: baseAddress, containerSize: buffer.count)
+            )
+            #expect(blob.magic == .entitlement)
+            #expect(blob.blobData == testData)
+        }
+    }
+
+    // MARK: - UnsafeSuperBlob with containerSize
+
+    @Test("SuperBlob with containerSize smaller than header returns nil")
+    func superBlobContainerTooSmallForHeader() throws {
+        let blobData = Self.createSuperBlobData()
+
+        try blobData.withUnsafeBytes { buffer in
+            let baseAddress = try #require(buffer.baseAddress)
+            // containerSize of 8 is less than SuperBlob Header (12 bytes)
+            let superBlob = CodeSigning.UnsafeSuperBlob(baseAddress: baseAddress, containerSize: 8)
+            #expect(superBlob == nil)
+        }
+    }
+
+    @Test("SuperBlob with indices exceeding containerSize returns nil")
+    func superBlobIndicesExceedContainer() throws {
+        let blobData = Self.createSuperBlobData()
+
+        try blobData.withUnsafeBytes { buffer in
+            let baseAddress = try #require(buffer.baseAddress)
+            // containerSize of 14: fits header (12) but not 2 indices (2 * 8 = 16 more needed)
+            let superBlob = CodeSigning.UnsafeSuperBlob(baseAddress: baseAddress, containerSize: 14)
+            #expect(superBlob == nil)
+        }
+    }
+
+    @Test("SuperBlob with blob offset beyond containerSize filters out blob")
+    func superBlobBlobOffsetBeyondContainer() throws {
+        // Create a SuperBlob where the second blob's offset is beyond the container
+        let blobData = Self.createSuperBlobData()
+
+        try blobData.withUnsafeBytes { buffer in
+            let baseAddress = try #require(buffer.baseAddress)
+            // Use a containerSize that includes header + indices + first blob, but not the second
+            // Header: 12, indices: 16, first blob: 8 + 17 = 25
+            let containerSize = 12 + 16 + 25
+            let superBlob = try #require(
+                CodeSigning.UnsafeSuperBlob(baseAddress: baseAddress, containerSize: containerSize)
+            )
+            // Only the first blob should be present; the second is beyond bounds
+            #expect(superBlob.blobs.count == 1)
+            #expect(superBlob.blobs[0].magic == .entitlement)
+        }
+    }
+
+    @Test("SuperBlob with valid containerSize returns all blobs")
+    func superBlobValidContainerSize() throws {
+        let blobData = Self.createSuperBlobData()
+
+        try blobData.withUnsafeBytes { buffer in
+            let baseAddress = try #require(buffer.baseAddress)
+            let superBlob = try #require(
+                CodeSigning.UnsafeSuperBlob(baseAddress: baseAddress, containerSize: buffer.count)
+            )
+            #expect(superBlob.magic == .embeddedSignature)
+            #expect(superBlob.blobs.count == 2)
+        }
+    }
+
+    // MARK: - BigEndian byte order
+
     @Test("Test BigEndian byte order conversion")
-    func testBigEndianByteOrder() throws {
+    func bigEndianByteOrder() throws {
         // Test that magic numbers are correctly converted from BigEndian
         let magic = UInt32(0xFADE_0CC0)
         let blobData = Self.createBlobData(magic: magic, data: Data())

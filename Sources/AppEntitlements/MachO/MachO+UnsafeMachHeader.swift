@@ -28,6 +28,45 @@ extension MachO {
                 throw DataError.fatBinary
             }
         }
+
+        init(baseAddress: UnsafeRawPointer, bufferSize: Int) throws {
+            self.baseAddress = baseAddress
+
+            guard bufferSize >= MemoryLayout<UInt32>.size else {
+                throw DataError.truncatedData
+            }
+
+            let machHeaderMagic = baseAddress.assumingMemoryBound(to: UInt32.self)
+            guard let headerMagic = HeaderMagic(rawValue: machHeaderMagic.pointee) else {
+                throw DataError.invalidMachHeader
+            }
+            self.headerMagic = headerMagic
+
+            switch headerMagic {
+            case .magic:
+                guard bufferSize >= MemoryLayout<mach_header>.size else {
+                    throw DataError.truncatedData
+                }
+                let machHeader = baseAddress.assumingMemoryBound(to: mach_header.self)
+                guard MemoryLayout<mach_header>.size + Int(machHeader.pointee.sizeofcmds) <= bufferSize else {
+                    throw DataError.truncatedData
+                }
+                loadCommands = UnsafeLoadCommands(machHeader: machHeader)
+
+            case .magic64:
+                guard bufferSize >= MemoryLayout<mach_header_64>.size else {
+                    throw DataError.truncatedData
+                }
+                let machHeader = baseAddress.assumingMemoryBound(to: mach_header_64.self)
+                guard MemoryLayout<mach_header_64>.size + Int(machHeader.pointee.sizeofcmds) <= bufferSize else {
+                    throw DataError.truncatedData
+                }
+                loadCommands = UnsafeLoadCommands(machHeader: machHeader)
+
+            case .fat, .fat64:
+                throw DataError.fatBinary
+            }
+        }
     }
 }
 

@@ -66,7 +66,7 @@ struct CodeGenerator {
             if index > 0 {
                 output += "\n"
             }
-            
+
             // Generate enum documentation
             output += "/// \(enumDef.documentation)\n"
             output += "public enum \(enumDef.name): \(enumDef.rawValueType), Sendable {\n"
@@ -118,7 +118,7 @@ struct CodeGenerator {
             let availabilityGroups = Dictionary(grouping: categoryProperties) { property -> String in
                 generateAvailabilityAttributeString(property.availability)
             }
-            
+
             let sortedGroups = availabilityGroups.sorted(by: { $0.key < $1.key })
 
             for (groupIndex, (availabilityAttr, groupProperties)) in sortedGroups.enumerated() {
@@ -148,7 +148,7 @@ struct CodeGenerator {
                 }
 
                 output += "}\n"
-                
+
                 // Add blank line between extensions (but not after the last one in any category)
                 let isLastGroup = groupIndex == sortedGroups.count - 1
                 if !isLastGroup {
@@ -259,17 +259,17 @@ private extension CodeGenerator {
     func filterRedundantAvailability(_ availability: [Availability]) -> [Availability] {
         // Build a set of supported platform names
         let supportedPlatformNames = Set(entitlements.supportedPlatforms.map { $0.name.lowercased() })
-        
+
         // Build a lookup dictionary from supportedPlatforms
         let minimumVersions = Dictionary(
             uniqueKeysWithValues: entitlements.supportedPlatforms.map { ($0.name.lowercased(), $0.version) }
         )
 
         return availability.filter { av in
-            guard av.unavailable != true else { return false }
-            
+            guard av.unavailable != true else { return true }
+
             let platformName = av.platform.lowercased()
-            
+
             // Filter out platforms that are not in supportedPlatforms
             guard supportedPlatformNames.contains(platformName) else {
                 return false
@@ -283,7 +283,6 @@ private extension CodeGenerator {
             return isVersion(av.introducedAt, greaterThan: minimumVersion)
         }
     }
-
 }
 
 // MARK: - Version Comparison

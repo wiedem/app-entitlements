@@ -15,7 +15,7 @@ enum ValidationError: Error, CustomStringConvertible {
 }
 
 enum EntitlementValidator {
-    private static let validScalarTypes: Set<String> = ["Bool", "String", "Int", "PropertyListValue"]
+    private static let validScalarTypes: Set<String> = ["Bool", "String", "Int32", "Int64", "PropertyListValue"]
     private static let validDictType = "[String: PropertyListValue]"
 
     static func validate(_ entitlements: EntitlementsData) throws {
@@ -55,7 +55,7 @@ enum EntitlementValidator {
         throw ValidationError.invalidType(
             property: property.name,
             type: type,
-            reason: "Type must be one of: Bool, String, Int, PropertyListValue, [String: PropertyListValue], or an array of these types"
+            reason: "Type must be one of: Bool, String, Int32, Int64, PropertyListValue, [String: PropertyListValue], or an array of these types"
         )
     }
 }

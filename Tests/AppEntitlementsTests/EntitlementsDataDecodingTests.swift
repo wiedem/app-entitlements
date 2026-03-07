@@ -4,9 +4,9 @@ internal import Testing
 
 struct EntitlementsDataDecodingTests {
     @Test("Test DER takes precedence over PropertyList")
-    func testDERPrecedenceOverPropertyList() throws {
+    func dERPrecedenceOverPropertyList() throws {
         // Use existing valid DER data from DEREncodedTests
-        let derData = Data(base64Encoded:
+        let derData = try #require(Data(base64Encoded:
             """
             cIIBIAIBAbCCARkwMAwWYXBwbGljYXRpb24taWRlbnRpZmllcgwWVEVBTUlELmNv\
             bS5leGFtcGxlLmFwcDBYDBZrZXljaGFpbi1hY2Nlc3MtZ3JvdXBzMD4MHVRFQU1J\
@@ -15,7 +15,7 @@ struct EntitlementsDataDecodingTests {
             ZWN0aW9uDBhOU0ZpbGVQcm90ZWN0aW9uQ29tcGxldGUwLQwjY29tLmFwcGxlLmRl\
             dmVsb3Blci50ZWFtLWlkZW50aWZpZXIMBlRFQU1JRDATDA5nZXQtdGFzay1hbGxv\
             dwEB/w==
-            """)!
+            """))
 
         // Create PropertyList data with different value for same key
         let plistData = """
@@ -45,7 +45,7 @@ struct EntitlementsDataDecodingTests {
     }
 
     @Test("Test PropertyList values without DER override")
-    func testPropertyListWithoutDEROverride() throws {
+    func propertyListWithoutDEROverride() throws {
         let plistData = """
         <?xml version="1.0" encoding="UTF-8"?>
         <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -60,7 +60,7 @@ struct EntitlementsDataDecodingTests {
         """.data(using: .utf8)!
 
         // Use valid DER data from DEREncodedTests
-        let derData = Data(base64Encoded:
+        let derData = try #require(Data(base64Encoded:
             """
             cIIBIAIBAbCCARkwMAwWYXBwbGljYXRpb24taWRlbnRpZmllcgwWVEVBTUlELmNv\
             bS5leGFtcGxlLmFwcDBYDBZrZXljaGFpbi1hY2Nlc3MtZ3JvdXBzMD4MHVRFQU1J\
@@ -69,7 +69,7 @@ struct EntitlementsDataDecodingTests {
             ZWN0aW9uDBhOU0ZpbGVQcm90ZWN0aW9uQ29tcGxldGUwLQwjY29tLmFwcGxlLmRl\
             dmVsb3Blci50ZWFtLWlkZW50aWZpZXIMBlRFQU1JRDATDA5nZXQtdGFzay1hbGxv\
             dwEB/w==
-            """)!
+            """))
 
         let entitlementsData = AppEntitlements.EntitlementsData(
             linkEditData: plistData,
@@ -90,7 +90,7 @@ struct EntitlementsDataDecodingTests {
     }
 
     @Test("Test text section fallback when LINKEDIT unavailable")
-    func testTextSectionFallback() throws {
+    func textSectionFallback() throws {
         let textSectionData = """
         <?xml version="1.0" encoding="UTF-8"?>
         <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -114,7 +114,7 @@ struct EntitlementsDataDecodingTests {
     }
 
     @Test("Test LINKEDIT takes precedence over text section")
-    func testLinkEditPrecedenceOverTextSection() throws {
+    func linkEditPrecedenceOverTextSection() throws {
         let linkEditData = """
         <?xml version="1.0" encoding="UTF-8"?>
         <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -150,7 +150,7 @@ struct EntitlementsDataDecodingTests {
     }
 
     @Test("Test empty entitlements returns empty dictionary")
-    func testEmptyEntitlementsReturnsEmptyDictionary() throws {
+    func emptyEntitlementsReturnsEmptyDictionary() throws {
         let entitlementsData = AppEntitlements.EntitlementsData.none
 
         let decoded = try entitlementsData.decode()
@@ -159,7 +159,7 @@ struct EntitlementsDataDecodingTests {
     }
 
     @Test("Test invalid PropertyList format throws unexpectedFormat error")
-    func testInvalidPropertyListFormatThrowsError() throws {
+    func invalidPropertyListFormatThrowsError() throws {
         // PropertyList with array at root instead of dictionary
         let invalidPlistData = """
         <?xml version="1.0" encoding="UTF-8"?>
@@ -183,7 +183,7 @@ struct EntitlementsDataDecodingTests {
     }
 
     @Test("Test partial success with one valid and one invalid source")
-    func testPartialSuccessReturnsValidData() throws {
+    func partialSuccessReturnsValidData() throws {
         // Valid PropertyList
         let validPlistData = """
         <?xml version="1.0" encoding="UTF-8"?>
@@ -220,7 +220,7 @@ struct EntitlementsDataDecodingTests {
     }
 
     @Test("Test all sources fail throws first error")
-    func testAllSourcesFailThrowsFirstError() throws {
+    func allSourcesFailThrowsFirstError() throws {
         // Invalid PropertyList 1
         let invalidPlist1 = """
         <?xml version="1.0" encoding="UTF-8"?>
@@ -254,7 +254,7 @@ struct EntitlementsDataDecodingTests {
     }
 
     @Test("Test DER decode error is caught and other sources still processed")
-    func testDERErrorDoesNotPreventOtherSources() throws {
+    func dERErrorDoesNotPreventOtherSources() throws {
         // Valid PropertyList
         let validPlistData = """
         <?xml version="1.0" encoding="UTF-8"?>

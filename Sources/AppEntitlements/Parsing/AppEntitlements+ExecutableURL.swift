@@ -1,4 +1,5 @@
 public import Foundation
+private import MachO
 
 public extension AppEntitlements {
     /// Reads entitlements from a Mach-O executable on disk.
@@ -23,10 +24,15 @@ public extension AppEntitlements {
             // Use memory-mapped I/O for efficient reading of large executable files
             let data = try Data(contentsOf: url, options: .alwaysMapped)
             return try data.withUnsafeBytes { rawBuffer -> [String: PropertyListValue] in
-                guard let baseAddress = rawBuffer.baseAddress, rawBuffer.count > 0 else {
+                guard let baseAddress = rawBuffer.baseAddress,
+                      rawBuffer.count >= MemoryLayout<mach_header>.size
+                else {
                     throw EntitlementsError.failedToReadEntitlements(MachO.DataError.invalidMachHeader)
                 }
-                let entitlementsData = try EntitlementsData.make(fromMachOFileData: baseAddress)
+                let entitlementsData = try EntitlementsData.make(
+                    fromMachOFileData: baseAddress,
+                    bufferSize: rawBuffer.count
+                )
                 return try entitlementsData.decode()
             }
         } catch let error as EntitlementsError {

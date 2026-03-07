@@ -392,6 +392,68 @@ struct CodeGeneratorTests {
         #expect(output == expected)
     }
 
+    @Test("Generate unavailable availability attribute for platform")
+    func unavailablePlatform() {
+        let entitlementsWithUnavailable = EntitlementsData(
+            version: "1.0",
+            properties: .init(
+                ios: [
+                    EntitlementProperty(
+                        name: "iosOnlyProperty",
+                        entitlementKey: "iosOnlyProperty",
+                        rawKey: "com.apple.ios-only",
+                        type: "Bool",
+                        possibleValues: nil,
+                        category: "Testing",
+                        documentation: "iOS only, unavailable on tvOS",
+                        appleDocUrl: "https://developer.apple.com/ios-only",
+                        availability: [
+                            Availability(platform: "iOS", introducedAt: "17.0", unavailable: false),
+                            Availability(platform: "macOS", introducedAt: "14.0", unavailable: false),
+                            Availability(platform: "tvOS", introducedAt: "", unavailable: true),
+                        ]
+                    ),
+                ],
+                macOS: [],
+                shared: []
+            ),
+            supportedPlatforms: Self.sampleEntitlements.supportedPlatforms
+        )
+
+        let generator = CodeGenerator(
+            entitlements: entitlementsWithUnavailable,
+            typeMappings: Self.sampleTypeMappings,
+            excludedProperties: []
+        )
+        let output = generator.generatePropertyFile(
+            for: "iOS",
+            properties: entitlementsWithUnavailable.properties.ios
+        )
+
+        let expected = """
+        public import AppEntitlements
+        internal import Foundation
+
+        // MARK: - Testing
+
+        @available(iOS 17.0, macOS 14.0, *)
+        @available(tvOS, unavailable)
+        public extension AppEntitlements {
+            /// iOS only, unavailable on tvOS
+            ///
+            /// - SeeAlso: [iOS only, unavailable on tvOS](https://developer.apple.com/ios-only)
+            static var iosOnlyProperty: Bool? {
+                get throws {
+                    try AppEntitlements.getValue(for: Entitlement.iosOnlyProperty, as: Bool.self)
+                }
+            }
+        }
+
+        """
+
+        #expect(output == expected)
+    }
+
     @Test("Exclude properties from generation")
     func excludedProperties() {
         let generator = CodeGenerator(
@@ -449,12 +511,12 @@ struct CodeGeneratorTests {
     // MARK: - Version Comparison Tests
 
     @Test("Version comparison", arguments: [
-        ("15.0", "15.0", false),    // Same version
-        ("16.0", "15.0", true),     // Higher major
-        ("14.5", "15.0", false),    // Lower major
-        ("15.1", "15.0", true),     // Higher minor
-        ("15.0.1", "15.0", true),   // More components, equal prefix
-        ("15.0", "15.0.1", false),  // Fewer components, equal prefix
+        ("15.0", "15.0", false), // Same version
+        ("16.0", "15.0", true), // Higher major
+        ("14.5", "15.0", false), // Lower major
+        ("15.1", "15.0", true), // Higher minor
+        ("15.0.1", "15.0", true), // More components, equal prefix
+        ("15.0", "15.0.1", false), // Fewer components, equal prefix
     ] as [(String, String, Bool)])
     func versionComparison(version: String, baseline: String, expected: Bool) {
         let generator = CodeGenerator(

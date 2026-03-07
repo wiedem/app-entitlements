@@ -1,11 +1,11 @@
 @testable import AppEntitlements
 internal import Foundation
-internal import Testing
 internal import SwiftASN1
+internal import Testing
 
 struct EntitlementsErrorTests {
     @Test("Test PropertyListValueError for invalid DER data")
-    func testInvalidDERThrowsDecodingError() {
+    func invalidDERThrowsDecodingError() {
         // Invalid DER data (truncated)
         let invalidDER = Data([0x70, 0x10, 0x02, 0x01])
 
@@ -16,7 +16,7 @@ struct EntitlementsErrorTests {
     }
 
     @Test("Test PropertyListValueError for corrupted PropertyList")
-    func testCorruptedPropertyListThrowsError() {
+    func corruptedPropertyListThrowsError() {
         let corruptedPlist = Data([0xFF, 0xFF, 0xFF, 0xFF])
 
         #expect(throws: (any Error).self) {
@@ -27,7 +27,7 @@ struct EntitlementsErrorTests {
     }
 
     @Test("Test DEREncodingError for unsupported value types")
-    func testUnsupportedPropertyListValueThrowsError() throws {
+    func unsupportedPropertyListValueThrowsError() throws {
         // Dictionary type is not supported in DER encoding
         let dictValue = PropertyListValue.dictionary(["key": .string("value")])
 
@@ -38,7 +38,7 @@ struct EntitlementsErrorTests {
     }
 
     @Test("Test unsupported Data type throws error")
-    func testUnsupportedDataTypeThrowsError() throws {
+    func unsupportedDataTypeThrowsError() throws {
         let dataValue = PropertyListValue.data(Data([1, 2, 3]))
 
         #expect(throws: AppEntitlements.DEREncodingError.self) {
@@ -48,7 +48,7 @@ struct EntitlementsErrorTests {
     }
 
     @Test("Test unsupported Date type throws error")
-    func testUnsupportedDateTypeThrowsError() throws {
+    func unsupportedDateTypeThrowsError() throws {
         let dateValue = PropertyListValue.date(Date())
 
         #expect(throws: AppEntitlements.DEREncodingError.self) {
@@ -58,7 +58,7 @@ struct EntitlementsErrorTests {
     }
 
     @Test("Test unsupported Float type throws error")
-    func testUnsupportedFloatTypeThrowsError() throws {
+    func unsupportedFloatTypeThrowsError() throws {
         let floatValue = PropertyListValue.float(1.5)
 
         #expect(throws: AppEntitlements.DEREncodingError.self) {
@@ -68,7 +68,7 @@ struct EntitlementsErrorTests {
     }
 
     @Test("Test unsupported Double type throws error")
-    func testUnsupportedDoubleTypeThrowsError() throws {
+    func unsupportedDoubleTypeThrowsError() throws {
         let doubleValue = PropertyListValue.double(2.5)
 
         #expect(throws: AppEntitlements.DEREncodingError.self) {
@@ -78,7 +78,7 @@ struct EntitlementsErrorTests {
     }
 
     @Test("Test PropertyListValue with unsupported ASN1 type")
-    func testUnsupportedASN1TypeThrowsError() throws {
+    func unsupportedASN1TypeThrowsError() throws {
         // Create DER data with NULL type (unsupported)
         let nullDER: [UInt8] = [0x05, 0x00] // NULL tag + 0 length
         let node = try DER.parse(nullDER)
@@ -89,7 +89,7 @@ struct EntitlementsErrorTests {
     }
 
     @Test("Test ASN1 decoding error is wrapped in PropertyListValueError")
-    func testASN1DecodingErrorWrapping() throws {
+    func aSN1DecodingErrorWrapping() throws {
         // Create invalid DER structure with boolean that has invalid content
         let invalidBooleanDER: [UInt8] = [0x01, 0x02, 0xFF, 0xFF] // Boolean with length 2 (invalid)
 

@@ -10,5 +10,7 @@ public extension MachO {
         case fatBinary
         /// The segment structure in the Mach-O binary is unexpected or invalid.
         case unexpectedSegmentStructure
+        /// The binary data is truncated or too small for the declared structure sizes.
+        case truncatedData
     }
 }
